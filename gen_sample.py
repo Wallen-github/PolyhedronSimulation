@@ -41,7 +41,7 @@ poly1 = rigidPolyhedron(model=mod, material=stone, center=center1, color='BLEUx'
                        faces=None, radius=10., tol=0., number=None, seed=None,
                     xr=1., yr=1., zr=1.)
 poly2 = rigidPolyhedron(model=mod, material=stone, center=center2, color='BLEUx',
-                       generation_type='random', nb_vertices=15, vertices=None,
+                       generation_type='regular', nb_vertices=7, vertices=None,
                        faces=None, radius=10., tol=0., number=None, seed=None,
                     xr=1., yr=1., zr=1.)
 
