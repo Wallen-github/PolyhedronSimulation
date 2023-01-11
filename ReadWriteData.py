@@ -11,6 +11,13 @@ import numpy as np
 import os
 
 
+def Write_bdyty(bodyatype, bodynumber, chemin, filename):
+    fid = open(os.path.join(chemin, filename), 'a+')
+    fid.write('$bdyty\n')
+    fid.write(' %5s  %5d\n' % (bodyatype, bodynumber))
+    fid.write('$blmty\n')
+
+
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
