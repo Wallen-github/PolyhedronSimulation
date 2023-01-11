@@ -30,7 +30,7 @@ def Read_connectivity(f_con):
         line_con = f_con.readline()
 
         i += 1
-        if i > 5: break
+        # if i > 5: break
 
     connectivity = np.array(connectivity)
     return connectivity
@@ -61,7 +61,7 @@ def Read_vertices(f_apo):
         line_apo = f_apo.readline()
 
         i += 1
-        if i > 5: break
+        # if i > 5: break
     vertices = np.array(vertices)
     faces = np.array(faces)
     return vertices,faces
@@ -79,5 +79,6 @@ if __name__ == '__main__':
     vertices,faces = Read_vertices(f_apo)
     f_apo.close()
     print(vertices)
+    print(faces)
 
 

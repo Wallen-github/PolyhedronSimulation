@@ -23,7 +23,7 @@ if __name__ == '__main__':
 
     chemin = 'DATBOX/'
     bodyatype = 'RBDY3'
-    bodynumber = 1
+    bodynumber = 3
     fid = open(os.path.join(chemin, 'BODIES.DAT'), 'a+')
     fid.write('$bdyty\n')
     fid.write(' %5s  %5d\n' % (bodyatype, bodynumber))
@@ -31,16 +31,17 @@ if __name__ == '__main__':
 
     #%%
     # on incremente le numero du prochain rigide
-    bulk_number = bulk_number + 1
+    bulk_number = 1
     bulkmaterialnom = 'STONE'
     bulkavrd = 7.8159264E+00
+    inertia = np.array([6.8426699E+03, 6.8426699E+03, 6.8426699E+03])
     # to generalize
     line = ' %5s  %5d  behav  %5s' % ('PLAIN', bulk_number, bulkmaterialnom)
     line += ' %5s=%14.7E' % ('avrd', bulkavrd)
     line += '                           '
-    line += ' %5s=%14.7E' % ('I1  ', bulk.inertia[0])
-    line += ' %5s=%14.7E' % ('I2  ', bulk.inertia[1])
-    line += ' %5s=%14.7E' % ('I3  ', bulk.inertia[2])
+    line += ' %5s=%14.7E' % ('I1  ', inertia[0])
+    line += ' %5s=%14.7E' % ('I2  ', inertia[1])
+    line += ' %5s=%14.7E' % ('I3  ', inertia[2])
     line += '\n'
     fid.write(line)
 
@@ -49,7 +50,7 @@ if __name__ == '__main__':
     fid.write('$nodty\n')
     ntype = 'NO6xx'
     coorsize = 6
-    coor = np.array([30,0,0,0,0,0])
+    coor = np.array([60,0,0,0,0,0])
     # on ecrit les noeuds comme precedemment (cf. writeElementNodesInBodies)
     ligne = ' %5s  %5d                ' % (ntype, 1)
     for j in range(coorsize):
@@ -65,14 +66,32 @@ if __name__ == '__main__':
     shape = 'POLYR'
     number=1
     color = 'BLEUx'
-    nb_vertices = 2000
-    nb_faces = 3996
+    nb_vertices = 4
+    nb_faces = 4
+    vertices = np.array([[0,0,10],
+                        [9.4280904E+00,0,-3.3333333E+00],
+                        [-4.7140452E+00, 8.1649658E+00, -3.3333333E+00],
+                        [-4.7140452E+00, -8.1649658E+00, -3.3333333E+00]])
+    connectivity = np.array([[4,2,3],
+                             [1,2,3],
+                             [1,4,3],
+                             [1,4,2]])
+
+    # nb_vertices = 2000
+    # nb_faces = 3996
+    # f_con = open("Connectivity.txt", "r")
+    # import ReadData
+    # connectivity = ReadData.Read_connectivity(f_con)
+    # f_con.close()
+    # f_apo = open("apophis_v233s7_vert2_new.mod.wf", "r")
+    # vertices, faces = ReadData.Read_vertices(f_apo)
+    # f_apo.close()
+
     # tacts writing
     fid.write('$tacty                                                                  \n')
     # on ecrit la premiere ligne decrivant le contacteur
     line = ' %5s  %5d  color  %5s  nb_vertex=%7d    nb_faces=%7d\n' % (shape, number, color, \
                                                                        nb_vertices, nb_faces)
-
     # on ajoute les lignes donnant les coordonnees des sommets
     for i in range(nb_vertices):
         line += '                             '
