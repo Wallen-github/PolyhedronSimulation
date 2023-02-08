@@ -26,3 +26,5 @@ But, the results got from LMGC90 code are
 </table>
 
 Compare these results and raw data, we can find two considerable differences. 1. The shape of concave polyhedron is revised. 2. The posistions of two polyhedrons are changed too. 
+
+In 'rigidContactor3D.py', some lines from 668 change the positions of vertices, but it cant explain the differenct values in BODIES.DAT. These lines compute the barycenter and inertial momentum matrix, and vertices positions are updated w.r.t the barycenter.
