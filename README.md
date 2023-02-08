@@ -8,12 +8,12 @@ tries: I tried to input my raw data before 'poly1 = rigidPolyhedron()' in line 5
 The raw data and configuration which I want to create are shown in below
 <table>
     <tr>
-        <td ><center><img src="./ResultPic/Rawdata.png" > </center></td>
-        <td ><center><img src="./ResultPic/RawConfig.png" ></center></td>
+        <td ><center><img src="./version20230207/ResultPic/Rawdata.png" > </center></td>
+        <td ><center><img src="./version20230207/ResultPic/RawConfig.png" ></center></td>
     </tr>
 But, the results got from LMGC90 code are
 <table>
     <tr>
-        <td ><center><img src="./ResultPic/Pic1.png" > </center></td>
-        <td ><center><img src="./ResultPic/Pic2.png" ></center></td>
+        <td ><center><img src="./version20230207/ResultPic/Pic1.png" > </center></td>
+        <td ><center><img src="./version20230207/ResultPic/Pic2.png" ></center></td>
     </tr>
