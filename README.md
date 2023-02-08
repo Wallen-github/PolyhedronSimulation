@@ -9,7 +9,7 @@ The raw data and configuration which I want to create are shown in below
 <table>
     <tr>
         <td ><center><img src="./version20230207/ResultPic/Rawdata.png" > </center></td>
-        <td ><center><img src="./version20230207/ResultPic/RawConfig.png" ></center></td>
+        <td ><center><img src="./version20230207/ResultPic/RawConfig.jpeg" ></center></td>
     </tr>
 But, the results got from LMGC90 code are
 <table>
