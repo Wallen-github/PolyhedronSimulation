@@ -24,3 +24,5 @@ But, the results got from LMGC90 code are
         <td ><center><img src="./version20230207/ResultPic/Pic2.png" ></center></td>
     </tr>
 </table>
+
+Compare these results and raw data, we can find two considerable differences. 1. The shape of concave polyhedron is revised. 2. The posistions of two polyhedrons are changed too. 
