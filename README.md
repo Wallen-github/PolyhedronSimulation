@@ -14,7 +14,8 @@ The raw data and configuration which I want to create are shown in below
         <td ><center><img src="./version20230207/ResultPic/Rawdata.png" > </center></td>
         <td ><center><img src="./version20230207/ResultPic/RawConfig.jpeg" ></center></td>
     </tr>
-    
+</table>
+
 But, the results got from LMGC90 code are
     
 <table>
@@ -22,3 +23,4 @@ But, the results got from LMGC90 code are
         <td ><center><img src="./version20230207/ResultPic/Pic1.png" > </center></td>
         <td ><center><img src="./version20230207/ResultPic/Pic2.png" ></center></td>
     </tr>
+</table>
