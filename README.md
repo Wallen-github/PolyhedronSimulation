@@ -40,7 +40,10 @@ In this version, we can creat any ployhendrons we want from 'gen_sample.py', wha
     </tr>
 </table>
 The left is the concave polyhendron and the right one is the convex polyhendron. For the convex configuration, an animation can be generated shown in following
+
 [(B. Rozitis and S. F. Green 2013)](https://academic.oup.com/mnras/article/430/2/1376/2892574)
+
+[我的博客](http://blog.csdn.net/m0_38099607 "悬停显示")  
 
 
 <video width="500" height="350" controls>
