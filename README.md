@@ -45,6 +45,10 @@ The left is the concave polyhendron and the right one is the convex polyhendron.
 [我的博客](http://blog.csdn.net/m0_38099607 "悬停显示")  
 
 
+
+https://user-images.githubusercontent.com/38872598/221667287-256bf48b-62ab-4483-93cd-5e270db99a5a.mp4
+
+
 <video width="500" height="350" controls>
     <source src="./version20230212/ResultPic/genPic2.mp4" type="video/mp4">
 </video>
