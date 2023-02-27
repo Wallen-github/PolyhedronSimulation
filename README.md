@@ -28,3 +28,18 @@ But, the results got from LMGC90 code are
 Compare these results and raw data, we can find two considerable differences. 1. The shape of concave polyhedron is revised. 2. The posistions of two polyhedrons are changed too. 
 
 In 'rigidContactor3D.py', some lines from 668 change the positions of vertices, but it cant explain the differenct values in BODIES.DAT. These lines compute the barycenter and inertial momentum matrix, and vertices positions are updated w.r.t the barycenter.
+
+## version20230214
+
+In this version, we can creat any ployhendrons we want from 'gen_sample.py', whatever convex or concave. But the concave polyhendron will meet errors in 'Computation.py', such as 'Error DiscreteGeometry::build_HE_Hdl: Humm contour not closed impossible .Error: impossible to create the HE structure'
+
+<table>
+    <tr>
+        <td ><center><img src="./version20230212/ResultPic/genPic.png" > </center></td>
+        <td ><center><img src="./version20230212/ResultPic/genPic2.png" ></center></td>
+    </tr>
+</table>
+The left is the concave polyhendron and the right one is the convex polyhendron. For the convex configuration, an animation can be generated shown in following
+<video width="500" height="350" controls>
+    <source src="./version20230212/ResultPic/genPic2.avi" type="video/avi">
+</video>

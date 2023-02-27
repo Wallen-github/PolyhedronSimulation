@@ -34,19 +34,18 @@ mat.addMaterial(stone)
 mod = model(name='rigid', physics='MECAx', element='Rxx3D', dimension=dim)
 
 center1 = np.array([0.5,0,0])
-center2 = np.array([-0.5,0,0])
+# center2 = np.array([-0.5,0,0])
 import ReadData
 f_apo = open("apophis_v233s7_vert2_new.mod.wf", "r")
 vertices, faces = ReadData.Read_vertices(f_apo)
 f_apo.close()
-poly1 = rigidPolyhedron(model=mod, material=stone, center=center2, color='BLEUx',
+poly1 = rigidPolyhedron(model=mod, material=stone, color='BLEUx',
                        generation_type='full', nb_vertices=2000, vertices=vertices,
-                       faces=faces, radius=1, tol=0., number=None, seed=None,
-                    xr=1., yr=1., zr=1.)
+                       faces=faces, tol=0., number=None, seed=None)
 
 poly2 = rigidPolyhedron(model=mod, material=stone, center=center1, color='BLEUx',
-                       generation_type='random', nb_vertices=10, vertices=None,
-                       faces=None, radius=0.05, tol=0., number=None, seed=None,
+                       generation_type='regular', nb_vertices=5, vertices=None,
+                       faces=None, radius=0.1, tol=0., number=None, seed=None,
                     xr=1., yr=1., zr=1.)
 
 bodies.addAvatar(poly1)

@@ -38,7 +38,8 @@ mod = model(name='rigid', physics='MECAx', element='Rxx3D', dimension=dim)
 
 vertices1 = np.array([[0,50,10],[10,50,0],[0,60,0],[0,50,0]])
 faces1 = np.array([[1,2,3],[1,2,4],[1,3,4],[2,3,4]])
-vertices2 = np.array([[0,0,10],[10,10,0],[-10,10,0],[0,-10,0],[0,0,0]])
+vertices2 = np.array([[0,0,10],[10,10,0],[-10,10,0],[0,-10,0],[0,0,0]]) # Convex
+# vertices2 = np.array([[0,0,10],[10,10,0],[-10,10,0],[0,-10,0],[0,15,0]]) # Concave
 faces2 = np.array([[1,2,5],[1,2,4],[1,3,5],[1,3,4],[2,4,5],[3,4,5]])
 poly1 = rigidPolyhedron(model=mod, material=stone, color='BLEUx',
                        generation_type='full', nb_vertices=4, vertices=vertices1,
