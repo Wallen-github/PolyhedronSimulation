@@ -40,7 +40,7 @@ In this version, we can creat any ployhendrons we want from 'gen_sample.py', wha
     </tr>
 </table>
 The left is the concave polyhendron and the right one is the convex polyhendron. For the convex configuration, an animation can be generated shown in following
-[Animation](./version20230212/ResultPic/genPic2.avi)
+[Animation](https://clay-atlas.com/blog/2022/02/17/github-readme-embed-video/#google_vignette)
 
 <video width="500" height="350" controls>
     <source src="./version20230212/ResultPic/genPic2.avi" type="video/avi">
