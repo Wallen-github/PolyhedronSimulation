@@ -1,5 +1,5 @@
 # PolyhedronSimulation
-This Project uses LMGC90 to simulate Polyhendron's behaviour under gravitation. The LMGC90 is one of discrete element methonds which can handle detailed contact dynamics.
+This Project uses LMGC90 to simulate Polyhendron's behavior under gravitation. The LMGC90 is one of discrete element methonds which can handle detailed contact dynamics.
 
 ## version20230207
 
@@ -25,13 +25,13 @@ But, the results got from LMGC90 code are
     </tr>
 </table>
 
-Compare these results and raw data, we can find two considerable differences. 1. The shape of concave polyhedron is revised. 2. The posistions of two polyhedrons are changed too. 
+Comparing these results and raw data, we can find two considerable differences. 1. The shape of a concave polyhedron is revised. 2. The positions of two polyhedrons are changed too. 
 
-In 'rigidContactor3D.py', some lines from 668 change the positions of vertices, but it cant explain the differenct values in BODIES.DAT. These lines compute the barycenter and inertial momentum matrix, and vertices positions are updated w.r.t the barycenter.
+In 'rigidContactor3D.py', some lines from 668 change the positions of vertices, but it can't explain the different values in BODIES.DAT. These lines compute the barycenter and inertial momentum matrix, and vertices positions are updated w.r.t the barycenter.
 
 ## version20230214
 
-In this version, we can creat any ployhendrons we want from 'gen_sample.py', whatever convex or concave. But the concave polyhendron will meet errors in 'Computation.py', such as 'Error DiscreteGeometry::build_HE_Hdl: Humm contour not closed impossible .Error: impossible to create the HE structure'
+In this version, we can create any polyhedron we want from 'gen_sample.py', whether convex or concave. But the concave polyhedron will meet errors in 'Computation.py', such as 'Error DiscreteGeometry::build_HE_Hdl: Humm contour not closed impossible. Error: impossible to create the HE structure'
 
 <table>
     <tr>
@@ -40,6 +40,6 @@ In this version, we can creat any ployhendrons we want from 'gen_sample.py', wha
     </tr>
 </table>
 
-The left is the concave polyhendron and the right one is the convex polyhendron. For the convex configuration, an animation can be generated shown in following
+The left is the concave polyhedron, and the right one is the convex polyhedron. For the convex configuration, an animation can be generated, shown in following
 
 https://user-images.githubusercontent.com/38872598/221667287-256bf48b-62ab-4483-93cd-5e270db99a5a.mp4
