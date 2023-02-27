@@ -1,7 +1,22 @@
 # PolyhedronSimulation
-This Project uses LMGC90 to simulate Polyhendron's behavior under gravitation. The LMGC90 is one of discrete element methonds which can handle detailed contact dynamics.
+This Project uses LMGC90 to simulate Polyhendron's behavior under gravitation. The LMGC90 is one of the discrete element methods which can handle detailed contact dynamics.
 
-## version20230207
+There are a few papers about the code and the method (by [F. Dubois](https://scholar.google.com/citations?user=boV9fugAAAAJ&hl=en&oi=ao) and others) that you can find for yourself.  However, this is a [paper](https://www.sciencedirect.com/science/article/pii/S0019103521001238) we wrote about the implementation of self-gravity.  The code also has a [wiki](https://git-xen.lmgc.univ-montp2.fr/lmgc90/lmgc90_user/-/wikis/home) page and a very comprehensive [documentation page](http://www.lmgc.univ-montp2.fr/~mozul/LMGC90_USER/UserDoc/docs_2019/#) that you will find very useful once you start using it.
+
+## General Structure
+
+- Preprocessor: Construct a numerical model
+- Computation
+- Visualize and analyze results
+
+## Preprocessor
+
+Functions in preprocessing are categorized into three domains: granular, masonry, and mesh manipulation. Any functionality filed under any category can be used or combined in any other context.
+
+## wiki of pykdgrav
+https://github.com/mikegrudic/pytreegrav/issues/1
+
+# version20230207
 
 bug: this code could change the raw data in gen_sample.py and Computation.py.
 
@@ -29,7 +44,7 @@ Comparing these results and raw data, we can find two considerable differences. 
 
 In 'rigidContactor3D.py', some lines from 668 change the positions of vertices, but it can't explain the different values in BODIES.DAT. These lines compute the barycenter and inertial momentum matrix, and vertices positions are updated w.r.t the barycenter.
 
-## version20230214
+# version20230214
 
 In this version, we can create any polyhedron we want from 'gen_sample.py', whether convex or concave. But the concave polyhedron will meet errors in 'Computation.py', such as 'Error DiscreteGeometry::build_HE_Hdl: Humm contour not closed impossible. Error: impossible to create the HE structure'
 
