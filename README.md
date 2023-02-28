@@ -73,7 +73,8 @@ $$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum
 in which $\mathbf{R}$ is the distance between body $i$ and planet.
 ![EarthGravity](./ReadmePic/EarthGravity.png)
 where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass and reference radius, $P_{n ! n}$ is the associated Legendre function of degree $n$ and order $m, \phi$ and $\lambda$ are the latitude and longitude of the spherical body in the body frame. The first-degree potential is expressed as
+$$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
-$$ U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}} $$
+in which
 
-in which $\boldsymbol{r}_{\mathrm{CM} = [R_E C_{11},R_E S_{11},R_E C_{10}]^T$
+$$\boldsymbol{r}_{\mathrm{CM}} = [R_EC_{11},R_ES_{11},R_EC_{10}]^T$$
