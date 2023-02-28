@@ -78,7 +78,8 @@ $$U_0= \frac{G M_E}{R_E} \sum_{n=0}^{\infty} \sum_{m=0}^n\left(\frac{R_E}{r}\rig
 where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass and reference radius, $P_{n ! n}$ is the associated Legendre function of degree $n$ and order $m, \phi$ and $\lambda$ are the latitude and longitude of the spherical body in the body frame. The first-degree potential is expressed as
 $$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
-in which 
+in which
+
 $$\boldsymbol{r}_{CM} = [R_EC_{11},R_ES_{11},R_EC_{10}]^T$$
 
 So the Planet's perturbation force is
