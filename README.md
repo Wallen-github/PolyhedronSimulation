@@ -62,7 +62,9 @@ https://user-images.githubusercontent.com/38872598/221667287-256bf48b-62ab-4483-
 # version20230227
 
 ### Orbital Dynamics
-This is a N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
+This is a N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are.
+
 $$m_i \ddot{\mathbf{q}}_i=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3}=-\frac{\partial U}{\partial \mathbf{q}_i}$$
+
 
 
