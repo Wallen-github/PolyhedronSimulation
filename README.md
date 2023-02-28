@@ -58,3 +58,13 @@ In this version, we can create any polyhedron we want from 'gen_sample.py', whet
 The left is the concave polyhedron, and the right one is the convex polyhedron. For the convex configuration, an animation can be generated, shown in following
 
 https://user-images.githubusercontent.com/38872598/221667287-256bf48b-62ab-4483-93cd-5e270db99a5a.mp4
+
+# version20230227
+
+### Orbital Dynamics
+This is a N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
+$$
+m_i \ddot{\mathbf{q}}_i=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3}=-\frac{\partial U}{\partial \mathbf{q}_i}
+$$
+
+
