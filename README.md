@@ -72,7 +72,17 @@ $$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum
 
 in which
 
-$$\begin{aligned} U= & \frac{G M^*}{R^*} \sum_{n=0}^{\infty} \sum_{m=0}^n\left(\frac{R^*}{r}\right)^{n+1} P_{n m}(\sin \phi) \cdot\left[\begin{array}{c} \cos (m \lambda) \\ \sin (m \lambda)\end{array}\right] \cdot\left[\begin{array}{c} C_{n m} \\ S_{n m} \end{array}\right],\end{aligned}$$
+$$
+\begin{aligned}
+U= & \frac{G M^*}{R^*} \sum_{n=0}^{\infty} \sum_{m=0}^n\left(\frac{R^*}{r}\right)^{n+1} P_{n m}(\sin \phi) \cdot\left[\begin{array}{c}
+\cos (m \lambda) \\
+\sin (m \lambda)
+\end{array}\right] \cdot\left[\begin{array}{c}
+C_{n m} \\
+S_{n m}
+\end{array}\right],
+\end{aligned}
+$$
 
 
 
