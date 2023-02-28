@@ -90,7 +90,7 @@ $$\mathbf{r} = \mathbf{r}_{C} + \mathbf{q}_{Ci} = \mathbf{r}_C + \mathbf{q}_i - 
 
 where 
 
-$$\mathbf{q}_{CM} = \Sigma_i^n m_i \mathbf{q}_{i} / \Sigma_i^n m_i= \Sigma_i^n m_i \mathbf{q}_{i} / M_A$$. 
+$$\mathbf{q}_{CM} = \sum_{i=1}^n m_i \mathbf{q}_{i} / \sum_{i=1}^n m_i= \sum_{i=1}^n m_i \mathbf{q}_{i} / M_A$$. 
 
 Using the Apophis orbital elements, we can model its flyby orbit $\mathbf{r}_{C}$ as a parabolic orbit,
 
