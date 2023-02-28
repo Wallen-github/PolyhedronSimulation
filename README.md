@@ -84,6 +84,7 @@ $$\frac{\partial U^1}{\partial \boldsymbol{r}}=\frac{G M_E}{r^3}\left[1_{[3 \tim
 
 From the center of mass of the Asteroid, we have the vector equation
 $$\mathbf{r} = \mathbf{r}_{C} + \mathbf{q}_{Ci} = \mathbf{r}_C + \mathbf{q}_i - \mathbf{q}_{CM}$$
+
 where $\mathbf{q}_{CM} = \Sigma_i^n m_i \mathbf{q}_{i} / \Sigma_i^n m_i= \Sigma_i^n m_i \mathbf{q}_{i} / M_A$. Using the Apophis orbital elements, we can model its flyby orbit $\mathbf{r}_{C}$ as a parabolic orbit,
 $$\ddot{\mathbf{r}}_{C} = -\frac{GM_EM_A}{r_{C}^3}\mathbf{r}_{C}$$
 
