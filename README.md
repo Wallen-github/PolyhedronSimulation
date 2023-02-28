@@ -79,7 +79,7 @@ where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass 
 $$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
 in which 
-$$\mathbf{r}_{CM} = [R_EC_{11},R_ES_{11},R_EC_{10}]^T$$
+$$\boldsymbol{r}_{CM} = [R_EC_{11},R_ES_{11},R_EC_{10}]^T$$
 
 So the Planet's perturbation force is
 $$\frac{\partial U^1}{\partial \boldsymbol{r}}=\frac{G M_E}{r^3}\left[1_{[3 \times 3]}-3 \hat{r} \hat{r}\right] \cdot \boldsymbol{r}_{\mathrm{CM}}$$
