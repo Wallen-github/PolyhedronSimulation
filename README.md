@@ -79,16 +79,17 @@ where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass 
 $$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
 in which
-
 $$\boldsymbol{r}_{CM} = [R_EC_{11},R_ES_{11},R_EC_{10}]^T$$
 
 So the Planet's perturbation force is
 $$\frac{\partial U^1}{\partial \boldsymbol{r}}=\frac{G M_E}{r^3}\left[1_{[3 \times 3]}-3 \hat{r} \hat{r}\right] \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
 From the center of mass of the Asteroid, we have the vector equation
+
 $$\mathbf{r} = \mathbf{r}_{C} + \mathbf{q}_{Ci} = \mathbf{r}_C + \mathbf{q}_i - \mathbf{q}_{CM}$$
 
 where $\mathbf{q}_{CM} = \Sigma_i^n m_i \mathbf{q}_{i} / \Sigma_i^n m_i= \Sigma_i^n m_i \mathbf{q}_{i} / M_A$. Using the Apophis orbital elements, we can model its flyby orbit $\mathbf{r}_{C}$ as a parabolic orbit,
+
 $$\ddot{\mathbf{r}}_{C} = -M_A\frac{\partial U^1}{\partial \mathbf{r}_C}$$
 
 ![FlybyOrbit](./ReadmePic/FlybyOrbit.png)
