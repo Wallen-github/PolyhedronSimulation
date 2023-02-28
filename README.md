@@ -71,6 +71,7 @@ Then we added the planet perturbation
 $$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3} + m_i \frac{\partial U_0}{\partial \mathbf{R}}$$
 
 in which
+
 $$\begin{aligned} U= & \frac{G M^*}{R^*} \sum_{n=0}^{\infty} \sum_{m=0}^n\left(\frac{R^*}{r}\right)^{n+1} P_{n m}(\sin \phi) \cdot\left[\begin{array}{c} \cos (m \lambda) \\ \sin (m \lambda)\end{array}\right] \cdot\left[\begin{array}{c} C_{n m} \\ S_{n m} \end{array}\right],\end{aligned}$$
 
 
