@@ -14,7 +14,7 @@ The implementation of gravitational forces is of paramount importance when simul
 ![Pseudo code](./ReadmePic/PseudoCode.png)
 
 ## wiki of pykdgrav
-https://github.com/mikegrudic/pytreegrav/issues/1
+[pykdgrav](https://github.com/mikegrudic/pytreegrav/issues/1)
 
 # version20230207
 
@@ -72,7 +72,9 @@ Then we added the planet perturbation
 $$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3} - m_i \frac{\partial U_0}{\partial \mathbf{r}}$$
 
 in which $\mathbf{R}$ is the distance between body $i$ and planet.
-![EarthGravity](./ReadmePic/EarthGravity.png)
+$$U_0= \frac{G M_E}{R_E} \sum_{n=0}^{\infty} \sum_{m=0}^n\left(\frac{R_E}{r}\right)^{n+1} P_{n m}(\sin \phi) \cdot [\cos (m \lambda)C_{n m} + \sin (m \lambda) S_{n m}]$$
+
+[//]: # (![EarthGravity]&#40;./ReadmePic/EarthGravity.png&#41;)
 where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass and reference radius, $P_{n ! n}$ is the associated Legendre function of degree $n$ and order $m, \phi$ and $\lambda$ are the latitude and longitude of the spherical body in the body frame. The first-degree potential is expressed as
 $$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
