@@ -32,7 +32,6 @@ The raw data and configuration which I want to create are shown in below
 </table>
 
 But, the results got from LMGC90 code are
-    
 <table>
     <tr>
         <td ><center><img src="./version20230207/ResultPic/Pic1.png" > </center></td>
@@ -62,13 +61,15 @@ https://user-images.githubusercontent.com/38872598/221667287-256bf48b-62ab-4483-
 # version20230227
 
 ### Orbital Dynamics
-This is a N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
+![Nbody](./ReadmePic/Nbody.png)
+
+This is an N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
 
 $$m_i F^{ext} = m_i \ddot{\mathbf{q}}_i=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3}$$
 
 Then we added the planet perturbation
 
-$$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3} + m_i \frac{\partial U_0}{\partial \mathbf{R}}$$
+$$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3} - m_i \frac{\partial U_0}{\partial \mathbf{r}}$$
 
 in which $\mathbf{R}$ is the distance between body $i$ and planet.
 ![EarthGravity](./ReadmePic/EarthGravity.png)
@@ -76,5 +77,14 @@ where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass 
 $$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
 in which
-
 $$\boldsymbol{r}_{\mathrm{CM}} = [R_EC_{11},R_ES_{11},R_EC_{10}]^T$$
+
+So the Planet's perturbation force is
+$$\frac{\partial U^1}{\partial \boldsymbol{r}}=\frac{G M_E}{r^3}\left[1_{[3 \times 3]}-3 \hat{r} \hat{r}\right] \cdot \boldsymbol{r}_{\mathrm{CM}}$$
+
+From the center of mass of the Asteroid, we have the vector equation
+$$\mathbf{r} = \mathbf{r}_{C} + \mathbf{q}_{Ci} = \mathbf{r}_C + \mathbf{q}_i - \mathbf{q}_{CM}$$
+where $\mathbf{q}_{CM} = \Sigma_i^n m_i \mathbf{q}_{i} / \Sigma_i^n m_i= \Sigma_i^n m_i \mathbf{q}_{i} / M_A$. Using the Apophis orbital elements, we can model its flyby orbit $\mathbf{r}_{C}$ as a parabolic orbit,
+$$\ddot{\mathbf{r}}_{C} = -\frac{GM_EM_A}{r_{C}^3}\mathbf{r}_{C}$$
+![FlybyOrbit](./ReadmePic/FlybyOrbit.png)
+
