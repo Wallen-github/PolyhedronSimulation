@@ -118,9 +118,9 @@ where $\mathbf{r_0}$ is the flyby orbit at the Apophis's center mass frame.
 ### Flyby Orbit
 
 From the known knowledge, we have the Geocentric hyperbolic orbit elements $\sigma_G$. We need to transport it to the Apophis's center mass frame $\mathbf{r}_0$ .
-$$
-\sigma_G \Rightarrow \mathbf{R}_G \Rightarrow \mathbf{r}_0
-$$
+
+$$\sigma_G \Rightarrow \mathbf{R}_G \Rightarrow \mathbf{r}_0$$
+
 The intermediate variable $\mathbf{R}_G$ is the asteroid's vector at the Earth Center Inertial Coordinates (ECI). We have the equation 
 
 $$\mathbf{r_0}=-\mathbf{R}_G$$
