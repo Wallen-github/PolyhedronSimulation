@@ -65,16 +65,15 @@ https://user-images.githubusercontent.com/38872598/221667287-256bf48b-62ab-4483-
 
 This is an N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
 
-$$m_i F^{ext} = m_i \ddot{\mathbf{q}}_i=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3}$$
+$$m_i F^{ext} = m_i \ddot{\mathbf{q}}_i=-\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3}=-\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\mathbf{r}_{ji}}{r_{ji}^3}$$
 
 Then we added the planet perturbation
 
-$$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=\sum_{\substack{j=1 \\ i \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3} - m_i \frac{\partial U_0}{\partial \mathbf{r}}$$
+$$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i + m_0 \ddot{\mathbf{q}}_0=-\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\mathbf{r}_{ji}}{r_{ji}^3} - \frac{Gm_0m_i\mathbf{r}_{0i}}{r_{0i}^3}$$
 
 in which $\mathbf{R}$ is the distance between body $i$ and planet.
-$$U_0= \frac{G M_E}{R_E} \sum_{n=0}^{\infty} \sum_{m=0}^n\left(\frac{R_E}{r}\right)^{n+1} P_{n m}(\sin \phi) \cdot [\cos (m \lambda)C_{n m} + \sin (m \lambda) S_{n m}]$$
+$$U_0= \frac{G M_E}{R_E} \sum_{n=0\\}^{\infty} \sum_{m=0}^n\left(\frac{R_E}{r}\right)^{n+1} P_{n m}(\sin \phi) \cdot [\cos (m \lambda)C_{n m} + \sin (m \lambda) S_{n m}]$$
 
-[//]: # (![EarthGravity]&#40;./ReadmePic/EarthGravity.png&#41;)
 where $G$ is the gravitational constant, $M_E$ and $R_E$ are the reference mass and reference radius, $P_{n ! n}$ is the associated Legendre function of degree $n$ and order $m, \phi$ and $\lambda$ are the latitude and longitude of the spherical body in the body frame. The first-degree potential is expressed as
 $$U^1=\frac{G M_E}{r^3} \boldsymbol{r} \cdot \boldsymbol{r}_{\mathrm{CM}}$$
 
@@ -97,5 +96,43 @@ Using the Apophis orbital elements, we can model its flyby orbit $\mathbf{r}_{C}
 $$\ddot{\mathbf{r}}_{C} = -M_A\frac{\partial U^1}{\partial \mathbf{r}_C}$$
 
 ![FlybyOrbit](./ReadmePic/FlybyOrbit.png)
+
+### Orbital Dynamics v2.0
+
+![Nbody](./ReadmePic/Nbody.png)
+
+This is an N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
+
+$$m_i F^{ext} = m_i \ddot{\mathbf{q}}_i=-\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\left(\mathbf{q}_j-\mathbf{q}_i\right)}{\left\|\mathbf{q}_j-\mathbf{q}_i\right\|^3}=-\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\mathbf{r}_{ji}}{r_{ji}^3}$$
+
+Then we added the planet perturbation
+
+$$m_i F^{ext} + m_0 F^0 = m_i \ddot{\mathbf{q}}_i=-\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\mathbf{r}_{ji}}{r_{ji}^3} - \frac{Gm_0m_i\mathbf{r}_{0i}}{r_{0i}^3}$$
+
+Transport the frame center to the asteroid's center mass
+
+$$\mathbf{q}_i = \mathbf{q}_{cm} + \mathbf{r}_i, ~~~ \mathbf{q}_{cm} = \frac{\sum_{i=1}^{n}m_i\mathbf{q}_i}{\sum_{i=1}^n m_i} = \frac{\sum_{i=1}^{n}m_i\mathbf{q}_i}{m_A}$$
+
+where $\mathbf{r_0}$ is the flyby orbit at the Apophis's center mass frame.
+
+### Flyby Orbit
+
+From the known knowledge, we have the Geocentric hyperbolic orbit elements $\sigma_G$. We need to transport it to the Apophis's center mass frame $\mathbf{r}_0$ .
+$$
+\sigma_G \Rightarrow \mathbf{R}_G \Rightarrow \mathbf{r}_0
+$$
+The intermediate variable $\mathbf{R}_G$ is the asteroid's vector at the Earth Center Inertial Coordinates (ECI). We have the equation 
+
+$$\mathbf{r_0}=-\mathbf{R}_G$$
+
+Considering the two body problems and hyperbolic orbit, we have
+
+$$r_0 = R_G=\frac{a(e^2-1)}{1+e\cos f}$$
+
+
+
+
+
+
 
 ### Rotational Dynamics
