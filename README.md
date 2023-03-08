@@ -99,7 +99,7 @@ $$\ddot{\mathbf{r}}_{C} = -M_A\frac{\partial U^1}{\partial \mathbf{r}_C}$$
 
 ### Orbital Dynamics v2.0
 
-![Nbody](./ReadmePic/Nbody.png)
+![Nbody](./ReadmePic/Nbody_v2.png)
 
 This is an N-body problem, so the equation of motion is focused on one single body. At first, bodies that make up an asteroid are
 
@@ -131,8 +131,5 @@ $$r_0 = R_G=\frac{a(e^2-1)}{1+e\cos f}$$
 
 
 
+### Shape Model
 
-
-
-
-### Rotational Dynamics
