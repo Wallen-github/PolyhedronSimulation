@@ -21,43 +21,106 @@
 $bdyty
  RBDY3        1
 $blmty
- PLAIN      1  behav  STONE  avrd= 0.3413920D+01
-                             I1  = 0.1041667D+04  I2  = 0.1041667D+04  I3  = 0.1666667D+04
+ PLAIN      1  behav  STONE  avrd= 0.2147117D+03
+                             I1  = 0.7761269D+12  I2  = 0.7761269D+12  I3  = 0.7761269D+12
 $nodty
- NO6xx      1                coo1= 0.2500000D+01  coo2= 0.5250000D+02  coo3= 0.2500000D+01
+ NO6xx      1                coo1= 0.9371429D+02  coo2= 0.3349956D-06  coo3= 0.7805486D-06
                              coo4= 0.0000000D+00  coo5= 0.0000000D+00  coo6= 0.0000000D+00
 $tacty
- POLYR      1  color  BLEUx  nb_vertex=      4    nb_faces=      4
-                             coo1= 0.4082483D+01  coo2= 0.7071068D+01  coo3= 0.1443376D+01
-                             coo1=-0.8164966D+01  coo2= 0.6350475D-16  coo3= 0.1443376D+01
-                             coo1= 0.4082483D+01  coo2=-0.7071068D+01  coo3= 0.1443376D+01
-                             coo1=-0.1490807D-14  coo2= 0.6350475D-16  coo3=-0.4330127D+01
-                             ver1=      1         ver2=      2         ver3=      3
-                             ver1=      2         ver2=      1         ver3=      4
-                             ver1=      1         ver2=      3         ver3=      4
-                             ver1=      3         ver2=      2         ver3=      4
+ POLYR      1  color  BLEUx  nb_vertex=     20    nb_faces=     36
+                             coo1= 0.1420282D+03  coo2= 0.1420282D+03  coo3= 0.1420282D+03
+                             coo1= 0.1420282D+03  coo2= 0.1420282D+03  coo3=-0.1420282D+03
+                             coo1= 0.1420282D+03  coo2=-0.1420282D+03  coo3= 0.1420282D+03
+                             coo1= 0.1420282D+03  coo2=-0.1420282D+03  coo3=-0.1420282D+03
+                             coo1=-0.1420282D+03  coo2= 0.1420282D+03  coo3= 0.1420282D+03
+                             coo1=-0.1420282D+03  coo2= 0.1420282D+03  coo3=-0.1420282D+03
+                             coo1=-0.1420282D+03  coo2=-0.1420282D+03  coo3= 0.1420282D+03
+                             coo1=-0.1420282D+03  coo2=-0.1420282D+03  coo3=-0.1420282D+03
+                             coo1= 0.8777823D+02  coo2= 0.2298064D+03  coo3=-0.7805486D-06
+                             coo1=-0.8777823D+02  coo2= 0.2298064D+03  coo3=-0.7805486D-06
+                             coo1= 0.8777823D+02  coo2=-0.2298064D+03  coo3=-0.7805486D-06
+                             coo1=-0.8777823D+02  coo2=-0.2298064D+03  coo3=-0.7805486D-06
+                             coo1= 0.2298064D+03  coo2=-0.3349956D-06  coo3= 0.8777823D+02
+                             coo1= 0.2298064D+03  coo2=-0.3349956D-06  coo3=-0.8777823D+02
+                             coo1=-0.2298064D+03  coo2=-0.3349956D-06  coo3= 0.8777823D+02
+                             coo1=-0.2298064D+03  coo2=-0.3349956D-06  coo3=-0.8777823D+02
+                             coo1=-0.4911053D-06  coo2= 0.8777823D+02  coo3= 0.2298064D+03
+                             coo1=-0.4911053D-06  coo2=-0.8777823D+02  coo3= 0.2298064D+03
+                             coo1=-0.4911053D-06  coo2= 0.8777823D+02  coo3=-0.2298064D+03
+                             coo1=-0.4911053D-06  coo2=-0.8777823D+02  coo3=-0.2298064D+03
+                             ver1=     20         ver2=      4         ver3=     11
+                             ver1=     11         ver2=     12         ver3=     20
+                             ver1=     20         ver2=     12         ver3=      8
+                             ver1=      3         ver2=     14         ver3=     13
+                             ver1=     14         ver2=     11         ver3=      4
+                             ver1=     14         ver2=      3         ver3=     11
+                             ver1=     16         ver2=     20         ver3=      8
+                             ver1=     16         ver2=      6         ver3=     19
+                             ver1=     16         ver2=     19         ver3=     20
+                             ver1=     10         ver2=     16         ver3=     15
+                             ver1=      5         ver2=     10         ver3=     15
+                             ver1=     10         ver2=      6         ver3=     16
+                             ver1=      7         ver2=     11         ver3=      3
+                             ver1=      7         ver2=      3         ver3=     18
+                             ver1=      7         ver2=     12         ver3=     11
+                             ver1=     12         ver2=      7         ver3=      8
+                             ver1=      7         ver2=     16         ver3=      8
+                             ver1=     16         ver2=      7         ver3=     15
+                             ver1=      7         ver2=      5         ver3=     15
+                             ver1=     18         ver2=     17         ver3=      7
+                             ver1=      7         ver2=     17         ver3=      5
+                             ver1=      2         ver2=     20         ver3=     19
+                             ver1=      2         ver2=      4         ver3=     20
+                             ver1=      2         ver2=     14         ver3=      4
+                             ver1=     19         ver2=      6         ver3=      2
+                             ver1=      6         ver2=     10         ver3=      2
+                             ver1=      2         ver2=     10         ver3=      9
+                             ver1=      1         ver2=      3         ver3=     13
+                             ver1=      3         ver2=      1         ver3=     18
+                             ver1=      1         ver2=     17         ver3=     18
+                             ver1=      1         ver2=      9         ver3=     10
+                             ver1=      1         ver2=     10         ver3=      5
+                             ver1=     17         ver2=      1         ver3=      5
+                             ver1=     14         ver2=      1         ver3=     13
+                             ver1=      1         ver2=      2         ver3=      9
+                             ver1=      1         ver2=     14         ver3=      2
 $$$$$$
       
 $bdyty
  RBDY3        2
 $blmty
- PLAIN      1  behav  STONE  avrd= 0.5837722D+01
-                             I1  = 0.1126201D+05  I2  = 0.1848958D+05  I3  = 0.2389424D+05
+ PLAIN      1  behav  STONE  avrd= 0.1281812D+03
+                             I1  = 0.6525021D+11  I2  = 0.6525021D+11  I3  = 0.5338654D+11
 $nodty
- NO6xx      1                coo1= 0.2500000D-07  coo2= 0.3750000D+01  coo3= 0.2500000D+01
+ NO6xx      1                coo1=-0.3162857D+03  coo2= 0.4222783D-15  coo3= 0.4222782D-14
                              coo4= 0.0000000D+00  coo5= 0.0000000D+00  coo6= 0.0000000D+00
 $tacty
- POLYR      1  color  BLEUx  nb_vertex=      5    nb_faces=      6
-                             coo1= 0.4655727D+01  coo2=-0.6377121D-15  coo3= 0.6974002D+01
-                             coo1=-0.6512904D+01  coo2= 0.1000000D+02  coo3=-0.1701347D+01
-                             coo1=-0.6512904D+01  coo2=-0.1000000D+02  coo3=-0.1701347D+01
-                             coo1= 0.1333108D+02  coo2=-0.6377121D-15  coo3=-0.4194629D+01
-                             coo1=-0.1147390D+02  coo2=-0.6377121D-15  coo3=-0.1078026D+01
-                             ver1=      1         ver2=      2         ver3=      5
-                             ver1=      2         ver2=      1         ver3=      4
-                             ver1=      5         ver2=      3         ver3=      1
-                             ver1=      1         ver2=      3         ver3=      4
-                             ver1=      2         ver2=      4         ver3=      5
-                             ver1=      4         ver2=      3         ver3=      5
+ POLYR      1  color  BLEUx  nb_vertex=     10    nb_faces=     16
+                             coo1=-0.1054994D-12  coo2=-0.4222783D-15  coo3= 0.1640000D+03
+                             coo1= 0.1420282D+03  coo2=-0.4222783D-15  coo3= 0.8200000D+02
+                             coo1=-0.1054994D-12  coo2= 0.1420282D+03  coo3= 0.8200000D+02
+                             coo1=-0.1420282D+03  coo2= 0.1697116D-13  coo3= 0.8200000D+02
+                             coo1=-0.1054994D-12  coo2=-0.1420282D+03  coo3= 0.8200000D+02
+                             coo1= 0.1420282D+03  coo2=-0.4222783D-15  coo3=-0.8200000D+02
+                             coo1=-0.1054994D-12  coo2= 0.1420282D+03  coo3=-0.8200000D+02
+                             coo1=-0.1420282D+03  coo2= 0.1697116D-13  coo3=-0.8200000D+02
+                             coo1=-0.1054994D-12  coo2=-0.1420282D+03  coo3=-0.8200000D+02
+                             coo1=-0.1054994D-12  coo2=-0.4222783D-15  coo3=-0.1640000D+03
+                             ver1=     10         ver2=      6         ver3=      9
+                             ver1=      9         ver2=      8         ver3=     10
+                             ver1=      6         ver2=     10         ver3=      7
+                             ver1=     10         ver2=      8         ver3=      7
+                             ver1=      5         ver2=      1         ver3=      4
+                             ver1=      4         ver2=      1         ver3=      3
+                             ver1=      2         ver2=      1         ver3=      5
+                             ver1=      3         ver2=      1         ver3=      2
+                             ver1=      4         ver2=      9         ver3=      5
+                             ver1=      4         ver2=      8         ver3=      9
+                             ver1=      4         ver2=      7         ver3=      8
+                             ver1=      4         ver2=      3         ver3=      7
+                             ver1=      9         ver2=      2         ver3=      5
+                             ver1=      2         ver2=      9         ver3=      6
+                             ver1=      2         ver2=      7         ver3=      3
+                             ver1=      2         ver2=      6         ver3=      7
 $$$$$$
       

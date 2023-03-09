@@ -113,8 +113,8 @@ for k in range(1, nb_steps + 1):
         fext[i, :] = 0.
 
     chipy.timer_StartTimer(timer_id)
-    # fext[:, 0:3] = Accel(p_coor, mass, G=6.6742e-11)
-    fext[:, 0:3] = Accel(p_coor, mass, G=1)
+    fext[:, 0:3] = Accel(p_coor, mass, G=6.6742e-11) # G \sim N*m^2/kg^2
+    # fext[:, 0:3] = Accel(p_coor, mass, G=1)
     for i in range(0, nbR3, 1):
         fext[i, :] = fext[i, :] * mass[i]
     chipy.timer_StopTimer(timer_id)

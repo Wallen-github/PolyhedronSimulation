@@ -9,6 +9,7 @@
 """
 import numpy as np
 from pylmgc90.pre import *
+import ShapeModel
 
 if not os.path.isdir('./DATBOX'):
     os.mkdir('./DATBOX')
@@ -25,29 +26,11 @@ mat    = materials()
 svs    = see_tables()
 tacts  = tact_behavs()
 
-rho = 2000
 
 Omega = 3e-5
 
-stone = material(name='STONE', materialType='RIGID', density=rho)
-mat.addMaterial(stone)
-mod = model(name='rigid', physics='MECAx', element='Rxx3D', dimension=dim)
-
-# center1 = np.array([0,0,0])
-# center2 = np.array([0,5,0])
-
-vertices1 = np.array([[0,50,10],[10,50,0],[0,60,0],[0,50,0]])
-faces1 = np.array([[1,2,3],[1,2,4],[1,3,4],[2,3,4]])
-# vertices2 = np.array([[0,0,10],[10,10,0],[-10,10,0],[0,-10,0],[0,0,0]]) # Concave
-vertices2 = np.array([[0,0,10],[10,10,0],[-10,10,0],[0,-10,0],[0,15,0]]) # Convex
-faces2 = np.array([[1,2,5],[1,2,4],[1,3,5],[1,3,4],[2,4,5],[3,4,5]])
-poly1 = rigidPolyhedron(model=mod, material=stone, color='BLEUx',
-                       generation_type='full', nb_vertices=4, vertices=vertices1,
-                       faces=faces1, tol=0., number=None, seed=None)
-poly2 = rigidPolyhedron(model=mod, material=stone, color='BLEUx',
-                       generation_type='full', nb_vertices=4, vertices=vertices2,
-                       faces=faces2, tol=0., number=None, seed=None,)
-
+[mat1,mod,poly1,poly2] = ShapeModel.ShapeModel_regular1()
+mat.addMaterial(mat1)
 bodies.addAvatar(poly1)
 bodies.addAvatar(poly2)
 
@@ -57,9 +40,7 @@ bodies.addAvatar(poly2)
 # is more ambiguous for polyedra.
 # You can used a normal one but i recommand to put to zero the tangential one.
 LawSPSPx = tact_behav(name='rst01', law='RST_CLB', rstn=1.0, rstt=0.0, fric=0.)
-
 tacts   += LawSPSPx
-
 svSPSPx = see_table(CorpsCandidat='RBDY3', candidat='POLYR',colorCandidat='BLEUx', behav=LawSPSPx,
                      CorpsAntagoniste='RBDY3', antagoniste='POLYR', colorAntagoniste='BLEUx', alert=0.)
 svs += svSPSPx
