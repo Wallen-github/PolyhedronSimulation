@@ -113,7 +113,19 @@ Transport the frame center to the asteroid's center mass
 
 $$\mathbf{q}_i = \mathbf{q}_{cm} + \mathbf{r}_i, ~~~ \mathbf{q}_{cm} = \frac{\sum_{i=1}^{n}m_i\mathbf{q}_i}{\sum_{i=1}^n m_i} = \frac{\sum_{i=1}^{n}m_i\mathbf{q}_i}{m_A}$$
 
-where $\mathbf{r_0}$ is the flyby orbit at the Apophis's center mass frame.
+where $\mathbf{r_0}$ is the flyby orbit at the Apophis's center mass frame. Then the $i-th$ body's acceleration can be expressed as
+
+$$m_i \ddot{\mathbf{r}}_i=m_i \ddot{\mathbf{q}}_i - m_i \ddot{\mathbf{q}}_{cm} = -\sum_{\substack{j=1 \\ j \neq i}}^n \frac{G m_i m_j\mathbf{r}_{ji}}{r_{ji}^3} - \frac{Gm_0m_i\mathbf{r}_{0i}}{r_{0i}^3} - m_i \ddot{\mathbf{q}}_{cm}$$
+
+in which
+
+$$m_i \ddot{\mathbf{q}}_{cm} = \frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
+
+$$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
+
+The mass $m_A$ is the asteroid mass.
+
+
 
 ### Flyby Orbit
 
@@ -127,9 +139,27 @@ $$\mathbf{r_0}=-\mathbf{R}_G$$
 
 Considering the two body problems and hyperbolic orbit, we have
 
-$$r_0 = R_G=\frac{a(e^2-1)}{1+e\cos f}$$
+$$r_0 = R_G=\frac{a(e^2-1)}{1+e\cos f}$$.
 
+Solve the two-body problem, 
 
+$$m_i \ddot{\mathbf{q}}_{cm} = \frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
+
+$$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
+
+we can get the solution w.r.t $\mathbf{r}_{0}$.
+
+$$\ddot{\mathbf{r}}_{0} = -\frac{G(m_0+m_A)\mathbf{r}_{0}}{r_{0}^3}$$
+
+Employing a normalized unit to speed up the integration
+
+$$[L] = R_E,~[M] = M_E,~[T] = \sqrt{[L]^3/G[M]},~ G = 1$$
+
+So we have
+
+$$\ddot{\mathbf{r}}_{0} = -\frac{\mathbf{r}_{0}}{r_{0}^3}$$
+
+After integration, we will put the unit back in the main computation scheme.
 
 ### Shape Model
 

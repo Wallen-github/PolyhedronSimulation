@@ -39,7 +39,7 @@ bodies.addAvatar(poly2)
 # Be careful. Here you define a normal and a tangential restitution. If there is a sense for sphere restitution
 # is more ambiguous for polyedra.
 # You can used a normal one but i recommand to put to zero the tangential one.
-LawSPSPx = tact_behav(name='rst01', law='RST_CLB', rstn=1.0, rstt=0.0, fric=0.)
+LawSPSPx = tact_behav(name='rst01', law='RST_CLB', rstn=1.0, rstt=0.0, fric=2.)
 tacts   += LawSPSPx
 svSPSPx = see_table(CorpsCandidat='RBDY3', candidat='POLYR',colorCandidat='BLEUx', behav=LawSPSPx,
                      CorpsAntagoniste='RBDY3', antagoniste='POLYR', colorAntagoniste='BLEUx', alert=0.)
@@ -52,8 +52,8 @@ writeDrvDof(bodies, chemin='DATBOX/')
 writeDofIni(bodies, chemin='DATBOX/')
 writeVlocRlocIni(chemin='DATBOX/')
 
-try:
-  visuAvatars(bodies)
-except:
-  pass
+# try:
+#   visuAvatars(bodies)
+# except:
+#   pass
 

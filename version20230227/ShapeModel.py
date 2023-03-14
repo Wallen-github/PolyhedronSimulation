@@ -60,6 +60,20 @@ def ShapeModel_regular1():
                            faces=None, radius=radii2, tol=0., number=None, seed=None,
                         xr=1., yr=1., zr=1.)
 
+    # Compute the initial spin rotation vector
+    SpinPeriod = 30.6*3600 # sec
+    omegaScalar = 2*np.pi/SpinPeriod # 1/sec
+    Lati = -59.3*np.pi/180 # rad
+    Long = 246.8*np.pi/180 # rad
+    omegaVec = np.array([[omegaScalar*np.cos(Lati)*np.cos(Long)],
+                         [omegaScalar*np.cos(Lati)*np.sin(Long)],
+                         [omegaScalar*np.sin(Long)]])
+    # poly2.imposeInitValue(component=[4,5,6], value=[0,0,2*np.pi/10000])
+    # poly1.imposeDrivenDof(component=[1, 2, 3], dofty='vlocy')
+    # poly2.imposeDrivenDof(component=[1, 2, 3], dofty='vlocy')
+    poly1.imposeInitValue(component=[4,5,6], value=[omegaVec[0],omegaVec[1],omegaVec[2]])
+    poly2.imposeInitValue(component=[4, 5, 6], value=[omegaVec[0], omegaVec[1], omegaVec[2]])
+
     volume = 0.
     # pour chaque contacteur
     for tact in poly1.contactors:

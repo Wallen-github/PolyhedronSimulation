@@ -10,8 +10,11 @@
 
 from __future__ import print_function
 import os, sys
+
+from matplotlib import pyplot as plt
 from pylmgc90 import chipy
 from pykdgrav import *
+import EarthGravity
 
 sys.path.append('..')
 
@@ -25,9 +28,10 @@ timer_id = chipy.timer_GetNewTimer('gravity computation')
 
 chipy.SetDimension(3)
 
-dt = 5.e-5
+# dt = 5.e-5
+dt = 1.
 theta = 0.5
-nb_steps = 50000
+nb_steps = 100000
 
 echo = 0
 
@@ -91,12 +95,19 @@ for i in range(nbR3):
 coor = np.empty([nbR3, 6], dtype=float)
 p_coor = np.empty([nbR3, 3], dtype=float)
 vbeg = np.empty([nbR3, 6], dtype=float)
-
 fext = np.empty([nbR3, 6], dtype=float)
 cij = np.zeros(3)
+PosVecE = np.empty([nb_steps+1, 6], dtype=float)
 
 chipy.OpenDisplayFiles()
 chipy.WriteDisplayFiles(1)
+
+# Compute the Earth's initial state
+muA = 2.650 # Gravitational parameter of asteroid Assumes density of 2 g∕cm^3
+GG = 6.6742e-11 # G \sim N*m^2/kg^2
+MA = muA/GG
+PosVecE0, Unit = EarthGravity.InitialEarthPV(MA,GG=GG)
+PosVecE[0,:] = PosVecE0
 
 for k in range(1, nb_steps + 1):
     print(k, '/', (nb_steps + 1))
@@ -113,9 +124,12 @@ for k in range(1, nb_steps + 1):
         fext[i, :] = 0.
 
     chipy.timer_StartTimer(timer_id)
-    fext[:, 0:3] = Accel(p_coor, mass, G=6.6742e-11) # G \sim N*m^2/kg^2
+    fext[:, 0:3] = Accel(p_coor, mass, G=GG)
+    # Compute the Earth position and velocity
+    PosVecE[k,:] = EarthGravity.EarthPos(dt, PosVecE[k-1,:], Unit)
     # fext[:, 0:3] = Accel(p_coor, mass, G=1)
     for i in range(0, nbR3, 1):
+        fextE = EarthGravity.EarthAccel(p_coor[i, 0:3], PosVecE[k,0:3], GG)
         fext[i, :] = fext[i, :] * mass[i]
     chipy.timer_StopTimer(timer_id)
 
@@ -146,4 +160,11 @@ chipy.WriteLastDof()
 chipy.CloseDisplayFiles()
 
 chipy.Finalize()
+
+#定义坐标轴
+fig = plt.figure()
+ax1 = plt.axes(projection='3d')
+ax1.plot3D(PosVecE[:,0],PosVecE[:,1],PosVecE[:,2],'blue')    #绘制空间曲线
+ax1.scatter3D(PosVecE0[0],PosVecE0[1],PosVecE0[2],'red')
+plt.show()
 
