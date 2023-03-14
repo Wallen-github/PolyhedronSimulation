@@ -149,7 +149,7 @@ $$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
 
 we can get the solution w.r.t $\mathbf{r}_{0}$.
 
-$$\ddot{\mathbf{r}}_{0} = -\frac{G(m_0+m_A)\mathbf{r}_{0}}{r_{0}^3}$$
+$$\ddot{\mathbf{r}}_{0} = \ddot{\mathbf{q}}_{0} - \ddot{\mathbf{q}}_{cm} = -\frac{G(m_0+m_A)\mathbf{r}_{0}}{r_{0}^3}$$
 
 Employing a normalized unit to speed up the integration
 
