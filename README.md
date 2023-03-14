@@ -153,7 +153,7 @@ $$\ddot{\mathbf{r}}_{0} = \ddot{\mathbf{q}}_{0} - \ddot{\mathbf{q}}_{cm} = -\fra
 
 Employing a normalized unit to speed up the integration
 
-$$[L] = R_E,~[M] = M_E,~[T] = \sqrt{[L]^3/G[M]},~ G = 1$$
+$$[L] = R_E,~[M] = m_0 + m_A,~[T] = \sqrt{[L]^3/G[M]},~ G = 1$$
 
 So we have
 
