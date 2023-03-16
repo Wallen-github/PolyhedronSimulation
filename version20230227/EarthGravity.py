@@ -11,33 +11,45 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.integrate import *
 
-def EarthAccel(Posi,PosE,GG):
+def EarthAccel(GG,Mi,Msum,Posi,PosE):
     ME = 5.972E24  # kg, Earth mass
-    r0i = PosE - Posi
-    Accel = - GG*ME/np.linalg.norm(r0i) * r0i - GG*ME/np.linalg.norm(PosE) * PosE
+    MA = Msum.copy()
+    Accel = np.zeros(6)
+    Accel[0:3] = - GG*ME*Mi*(Posi - PosE)/np.linalg.norm(Posi - PosE)**3 #- GG*ME*MA*PosE/np.linalg.norm(PosE)**3
     return Accel
 
-def EarthPos(time,PosVec0,Unit):
+def EarthPos(timespan,PosVec0,Unit):
     '''
     This function will compute the Earth acceleration based on the given Geocentric hyperbolic orbit and initial position/velocity
-    :param time: sec, epoch
-    :param MA: kg, Mass of asteroid Assumes density of 2 g∕cm^3
-    :param GG: N*m^2/kg^2, gravitational constant, 6.6742e-11
-    :return PosVec: position (m) and velocity (m/sec) of Earth
+    :param timespan: sec, epoch span
+    :param PosVec0: Initial position (m) and velocity (m/sec) of Earth
+    :param Unit: unit length (m), mass (kg), and time (sec)
+    :return PosVec: Final position (m) and velocity (m/sec) of Earth
+    :return PosVecSol.y: Normalized positions and velocities during whole integration
     '''
     Lunit, Munit, Tunit = Unit
-    PosVec0[0:3] = PosVec0[0:3]/Lunit
-    PosVec0[3:6] = PosVec0[3:6] * Tunit / Lunit
-    timespan = [0, time/Tunit]
+    PosVec0_norm = PosVec0.copy()
+    PosVec0_norm[0:3] = PosVec0[0:3] / Lunit
+    PosVec0_norm[3:6] = PosVec0[3:6] * Tunit / Lunit
+    timespan = timespan / Tunit
     mu = 1
-    PosVecSol = solve_ivp(fun=FlybyOrbit,t_span=timespan,y0=PosVec0,args=(mu,))
-    PosVec = PosVecSol.y[:,-1]
-    PosVec[0:3] = PosVec0[0:3] * Lunit
-    PosVec[3:6] = PosVec0[3:6] * Lunit / Tunit
+    tol = 1E-13
+    PosVecSol = solve_ivp(fun=FlybyOrbit, t_span=timespan, y0=PosVec0_norm, args=(mu,), method='RK45', rtol=tol, atol=tol)
+    PosVec = PosVecSol.y[:,-1].copy()
+    PosVec[0:3] = PosVec[0:3] * Lunit
+    PosVec[3:6] = PosVec[3:6] * Lunit / Tunit
 
     return PosVec,PosVecSol.y
 
 def InitialEarthPV(MA,GG=1.):
+    '''
+    This function initialized the Earth orbit around Apophis.
+    :param MA: kg, Asteroid mass
+    :param GG: N*m^2/kg^2, Gravitaional parameter, default value is 1.
+    :return:
+    PosVec0: Initial position (m) and velocity (m/sec) of Earth
+    Unit: unit length (m), mass (kg), and time (sec)
+    '''
     M0 = 5.972E24  # kg, Earth mass
     R0 = 6378.1370E3  # m, Earth radius
     q = 3.72E7  # m, Periapsis radius
@@ -46,9 +58,9 @@ def InitialEarthPV(MA,GG=1.):
     inc = 47.8  # deg, Inclination
     ome = -143.9  # deg, Argument of periapsis
     Ome = 1.8  # deg, Longitude of asc. node
-    f = -10.  # deg, true anomaly
+    f = -100.  # deg, true anomaly
     ele_deg = np.array([axi, ecc, inc, ome, Ome, f])
-    ele_rad = ele_deg
+    ele_rad = ele_deg.copy()
     ele_rad[2:6] = ele_deg[2:6] * np.pi / 180  # degree to radian
     mu = GG * (M0 + MA)
     PosVec0 = Keplerian2hyperbola(mu, ele_rad)
@@ -63,8 +75,20 @@ def InitialEarthPV(MA,GG=1.):
     return PosVec0, Unit
 
 def FlybyOrbit(t,PosVec,mu):
-    # [GG,M0,Mi] = parameters
-    Accel = - mu / np.linalg.norm(PosVec) * PosVec
+    '''
+    This function provide a EOM of two-body problem
+    Args:
+        t: time
+        PosVec: position and velocity
+        mu: mass, parameter, G * M
+
+    Returns:
+        Accel: acceleration
+    '''
+
+    Accel = np.empty(6)
+    Accel[0:3] = PosVec[3:6]
+    Accel[3:6] = - mu * PosVec[0:3] / np.linalg.norm(PosVec[0:3])**3
     return Accel
 
 def Keplerian2hyperbola(mu,ele):
@@ -104,27 +128,39 @@ def Keplerian2hyperbola(mu,ele):
 if __name__ == '__main__':
 
     # Test: Keplerian2hyperbola
-    mu = 1
-    ele = np.array([1.,2.,0.,0.,0.,110.])
-    print('ele = ', ele,' deg')
-    ele[2:6] = ele[2:6] * np.pi / 180  # degree to radian
-    PV = Keplerian2hyperbola(mu,ele)
-    print('PV = ',PV.flatten())
+    # mu = 1
+    # ele = np.array([1.,2.,0.,0.,0.,-80.])
+    # print('ele = ', ele,' deg')
+    # ele[2:6] = ele[2:6] * np.pi / 180  # degree to radian
+    # PV = Keplerian2hyperbola(mu,ele)
+    # print('PV = ',PV.flatten())
+    #
+    # Unit = np.array([1.,1.,1.])
+    # timespan = [0,10.]
+    # PV0 = PV.flatten()
+    # # PV0= np.array([1,0,0,0,0.5,0])
+    # PosVec, Sol = EarthPos(timespan, PV0, Unit)
+    # print('PosVec = ', PosVec)
 
-    muA = 2.650
-    time = 100000
-    GG = 6.6742e-11
-    MA = muA/GG
+    # Test integration with unit
+    muA = 2.650 # m^3/sec^2
+    timespan = [0,100000] # sec
+    GG = 6.6742e-11 # G, N*m^2/kg^2
+    MA = muA/GG # kg
     PosVec0, Unit = InitialEarthPV(MA,GG=GG)
     print('PosVec0 = ', PosVec0)
-    PosVec,Sol = EarthPos(time,PosVec0,Unit)
+    PosVec,Sol = EarthPos(timespan,PosVec0,Unit)
     print('PosVec = ', PosVec)
 
     # 定义坐标轴
     fig = plt.figure()
     ax1 = plt.axes(projection='3d')
-    ax1.plot3D(Sol[0, :], Sol[1, :], Sol[2, :], 'blue')  # 绘制空间曲线
-    ax1.scatter3D(Sol[0, :], Sol[1, :], Sol[2, :], 'red')
+    ax1.plot3D(Sol[0, :], Sol[1, :], Sol[2, :])  # 绘制空间曲线
+    ax1.scatter3D(Sol[0, 0], Sol[1, 0], Sol[2, 0], edgecolors='red',edgecolor='red')
+    ax1.scatter3D(0,0,0, edgecolors='red', edgecolor='red')
+    ax1.set_xlabel('x')
+    ax1.set_ylabel('y')
+    ax1.set_zlabel('z')
     plt.show()
 
 
