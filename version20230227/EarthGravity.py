@@ -11,14 +11,13 @@ import numpy as np
 from matplotlib import pyplot as plt
 from scipy.integrate import *
 
-def EarthAccel(GG,Mi,Msum,Posi,PosE):
+def EarthAccel(GG,Mi,Posi,PosE):
     ME = 5.972E24  # kg, Earth mass
-    MA = Msum.copy()
     Accel = np.zeros(6)
-    Accel[0:3] = - GG*ME*Mi*(Posi - PosE)/np.linalg.norm(Posi - PosE)**3 #- GG*ME*MA*PosE/np.linalg.norm(PosE)**3
+    Accel[0:3] = - GG*ME*Mi*(Posi - PosE)/np.linalg.norm(Posi - PosE)**3
     return Accel
 
-def EarthPos(timespan,PosVec0,Unit):
+def EarthPos(timespan,PosVec0,Unit,Gravorder):
     '''
     This function will compute the Earth acceleration based on the given Geocentric hyperbolic orbit and initial position/velocity
     :param timespan: sec, epoch span
@@ -34,7 +33,7 @@ def EarthPos(timespan,PosVec0,Unit):
     timespan = timespan / Tunit
     mu = 1
     tol = 1E-13
-    PosVecSol = solve_ivp(fun=FlybyOrbit, t_span=timespan, y0=PosVec0_norm, args=(mu,), method='RK45', rtol=tol, atol=tol)
+    PosVecSol = solve_ivp(fun=FlybyOrbit, t_span=timespan, y0=PosVec0_norm, args=(mu,Gravorder), method='RK45', rtol=tol, atol=tol)
     PosVec = PosVecSol.y[:,-1].copy()
     PosVec[0:3] = PosVec[0:3] * Lunit
     PosVec[3:6] = PosVec[3:6] * Lunit / Tunit
@@ -74,7 +73,7 @@ def InitialEarthPV(MA,GG=1.):
 
     return PosVec0, Unit
 
-def FlybyOrbit(t,PosVec,mu):
+def FlybyOrbit(t,PosVec,mu,order):
     '''
     This function provide a EOM of two-body problem
     Args:
@@ -86,9 +85,24 @@ def FlybyOrbit(t,PosVec,mu):
         Accel: acceleration
     '''
 
-    Accel = np.empty(6)
+    Vterm = np.empty([2,3])
+    Accel = np.zeros(6)
+
+    # Zero order term
+    Vterm[0,:] = - mu * PosVec[0:3] / np.linalg.norm(PosVec[0:3])**3
+
+    # 2nd order term
+    C20 = -1.082635E-3
+    C21 = -2.58198E-10
+    C22 = 1.57457E-6
+    x,y,z = PosVec[0:3]
+    Vterm[1,0] = (3*x*(C20*(x**2+y**2-4*z**2)+2*C22*(-3*x**2+7*y**2+2*z**2)))/(2*(x**2+y**2+z**2)**(7/2))
+    Vterm[1,1] = (3*y*(C20*(x**2+y**2-4*z**2)-2*C22*(7*x**2-3*y**2+2*z**2)))/(2*(x**2+y**2+z**2)**(7/2))
+    Vterm[1,2] = (3*z*(10*C22*(-x**2+y**2)+C20*(3*x**2+3*y**2-2*z**2)))/(2*(x**2+y**2+z**2)**(7/2))
+
     Accel[0:3] = PosVec[3:6]
-    Accel[3:6] = - mu * PosVec[0:3] / np.linalg.norm(PosVec[0:3])**3
+    for i in range(order):
+        Accel[3:6] = Accel[3:6] + Vterm[i,:]
     return Accel
 
 def Keplerian2hyperbola(mu,ele):
@@ -128,40 +142,84 @@ def Keplerian2hyperbola(mu,ele):
 if __name__ == '__main__':
 
     # Test: Keplerian2hyperbola
-    # mu = 1
-    # ele = np.array([1.,2.,0.,0.,0.,-80.])
-    # print('ele = ', ele,' deg')
-    # ele[2:6] = ele[2:6] * np.pi / 180  # degree to radian
-    # PV = Keplerian2hyperbola(mu,ele)
-    # print('PV = ',PV.flatten())
-    #
-    # Unit = np.array([1.,1.,1.])
-    # timespan = [0,10.]
-    # PV0 = PV.flatten()
-    # # PV0= np.array([1,0,0,0,0.5,0])
-    # PosVec, Sol = EarthPos(timespan, PV0, Unit)
-    # print('PosVec = ', PosVec)
+    mu = 1
+    ele = np.array([1.,2.,0.,0.,0.,-80.])
+    print('ele = ', ele,' deg')
+    ele[2:6] = ele[2:6] * np.pi / 180  # degree to radian
+    PV = Keplerian2hyperbola(mu,ele)
+    print('PV = ',PV.flatten())
+
+    Unit = np.array([1.,1.,1.])
+    timespan = [0,10.]
+    PV0 = PV.flatten()
+    # PV0= np.array([1,0,0,0,0.5,0])
+    Gravorder = 1
+    PosVec, Sol = EarthPos(timespan, PV0, Unit, Gravorder)
+    print('PosVec = ', PosVec)
 
     # Test integration with unit
     muA = 2.650 # m^3/sec^2
-    timespan = [0,100000] # sec
+    timespan = [0,3*24*3600] # sec
     GG = 6.6742e-11 # G, N*m^2/kg^2
     MA = muA/GG # kg
     PosVec0, Unit = InitialEarthPV(MA,GG=GG)
     print('PosVec0 = ', PosVec0)
-    PosVec,Sol = EarthPos(timespan,PosVec0,Unit)
+    Gravorder = 1
+    PosVec,Sol = EarthPos(timespan,PosVec0,Unit, Gravorder)
     print('PosVec = ', PosVec)
 
-    # 定义坐标轴
+    # Plot
     fig = plt.figure()
     ax1 = plt.axes(projection='3d')
-    ax1.plot3D(Sol[0, :], Sol[1, :], Sol[2, :])  # 绘制空间曲线
-    ax1.scatter3D(Sol[0, 0], Sol[1, 0], Sol[2, 0], edgecolors='red',edgecolor='red')
-    ax1.scatter3D(0,0,0, edgecolors='red', edgecolor='red')
+    ax1.plot3D(Sol[0, :], Sol[1, :], Sol[2, :],c='black',label='geocentric hyperbolic orbit')  # 绘制空间曲线
+    ax1.scatter3D(Sol[0, 0], Sol[1, 0], Sol[2, 0], c='red',s=20,label='initial position')
+    ax1.scatter3D(0,0,0, c='blue',s=20,label='Earth')
     ax1.set_xlabel('x')
     ax1.set_ylabel('y')
     ax1.set_zlabel('z')
+    plt.legend()
     plt.show()
+
+    # Compare different gravity order
+    muA = 2.650  # m^3/sec^2
+    timespan = [0, 3 * 24 * 3600]  # sec
+    GG = 6.6742e-11  # G, N*m^2/kg^2
+    MA = muA / GG  # kg
+    PosVec0, Unit = InitialEarthPV(MA, GG=GG)
+    print('PosVec0 = ', PosVec0)
+    Gravorder = 1
+    PosVec1, Sol1 = EarthPos(timespan, PosVec0, Unit, Gravorder)
+    Gravorder = 2
+    PosVec2, Sol2 = EarthPos(timespan, PosVec0, Unit, Gravorder)
+
+    # Plot
+    fig = plt.figure()
+    ax1 = fig.add_subplot(3,2,1)
+    ax1.plot(abs(Sol1[0,:]-Sol2[0, :]))
+    ax1.set_ylabel('delta x')
+    ax1.grid()
+    ax1 = fig.add_subplot(3, 2, 3)
+    ax1.plot(abs(Sol1[1, :] - Sol2[1, :]))
+    ax1.set_ylabel('delta y')
+    ax1.grid()
+    ax1 = fig.add_subplot(3, 2, 5)
+    ax1.plot(abs(Sol1[2, :] - Sol2[2, :]))
+    ax1.set_ylabel('delta z')
+    ax1.grid()
+    ax1 = fig.add_subplot(3, 2, 2)
+    ax1.plot(abs(Sol1[3, :] - Sol2[3, :]))
+    ax1.set_ylabel('delta x_dot')
+    ax1.grid()
+    ax1 = fig.add_subplot(3, 2, 4)
+    ax1.plot(abs(Sol1[4, :] - Sol2[4, :]))
+    ax1.set_ylabel('delta y_dot')
+    ax1.grid()
+    ax1 = fig.add_subplot(3, 2, 6)
+    ax1.plot(abs(Sol1[5, :] - Sol2[5, :]))
+    ax1.set_ylabel('delta z_dot')
+    ax1.grid()
+    plt.show()
+
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

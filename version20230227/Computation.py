@@ -98,6 +98,7 @@ vbeg = np.empty([nbR3, 6], dtype=float)
 fext = np.empty([nbR3, 6], dtype=float)
 cij = np.zeros(3)
 PosVecE = np.empty([nb_steps+1, 6], dtype=float)
+Record_posvel = np.zeros([nb_steps+1, 6], dtype=float)
 
 chipy.OpenDisplayFiles()
 chipy.WriteDisplayFiles(1)
@@ -108,7 +109,6 @@ GG = 6.6742e-11 # G \sim N*m^2/kg^2
 MA = muA/GG
 PosVecE0, Unit = EarthGravity.InitialEarthPV(MA,GG=GG)
 PosVecE[0,:] = PosVecE0.copy()
-Msum = np.sum(mass)
 
 for k in range(1, nb_steps + 1):
     print(k, '/', (nb_steps + 1))
@@ -126,12 +126,18 @@ for k in range(1, nb_steps + 1):
 
     chipy.timer_StartTimer(timer_id)
     fext[:, 0:3] = Accel(p_coor, mass, G=GG)
+    # Record the position and velocity
+    for i in range(0, nbR3, 1):
+        Record_posvel[k,:] = Record_posvel[k,:] + mass[i] * coor[i, :]
+    Record_posvel[k, :] = Record_posvel[k,:]/np.sum(mass)
+
     # Compute the Earth position and velocity
     timespan = [(k-1)*dt,k*dt]
-    PosVecE[k,:], PosVecSol = EarthGravity.EarthPos(timespan, PosVecE[k-1,:], Unit)
+    Gravorder = 2
+    PosVecE[k,:], PosVecSol = EarthGravity.EarthPos(timespan, PosVecE[k-1,:], Unit, Gravorder)
 
     for i in range(0, nbR3, 1):
-        fextE = EarthGravity.EarthAccel(GG,mass[i],Msum,p_coor[i, 0:3],PosVecE[i, 0:3])
+        fextE = EarthGravity.EarthAccel(GG,mass[i],p_coor[i, 0:3],PosVecE[i, 0:3])
         fext[i, :] = fext[i, :] * mass[i] + fextE
     chipy.timer_StopTimer(timer_id)
 
@@ -166,11 +172,13 @@ chipy.Finalize()
 #定义坐标轴
 fig = plt.figure()
 ax1 = plt.axes(projection='3d')
-ax1.plot3D(PosVecE[:,0],PosVecE[:,1],PosVecE[:,2],'blue')    #绘制空间曲线
-ax1.scatter3D(PosVecE[0,0],PosVecE[0,1],PosVecE[0,2],'red')
-ax1.scatter3D(0,0,0, edgecolors='red', edgecolor='red')
+ax1.plot3D(PosVecE[:,0],PosVecE[:,1],PosVecE[:,2],label='geocentric hyperbolic orbit',color='black')
+ax1.plot3D(Record_posvel[:,0],Record_posvel[1,:],Record_posvel[2,:],label='real orbit',color='blue')
+# ax1.scatter3D(PosVecE[0,0],PosVecE[0,1],PosVecE[0,2],label='initial position',c='red',s=20)
+ax1.scatter3D(0,0,0, c='blue',s=20,label='Earth')
 ax1.set_xlabel('x')
 ax1.set_ylabel('y')
 ax1.set_zlabel('z')
+plt.legend()
 plt.show()
 
