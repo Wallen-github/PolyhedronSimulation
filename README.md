@@ -214,6 +214,7 @@ Then the transformation from orbital elements to Position/Velocity can be employ
         <td ><center><img src="ReadmePic/FlybyOrbit_integration.png" >Fig.1 </center></td>
         <td ><center><img src="ReadmePic/FlybyOrbit_integration2.png"  >Fig.2 </center></td>
     </tr>
+</table>
 
 The comparison between the 0th-order and 2nd-order gravity is determined with the normalized unit.
 
