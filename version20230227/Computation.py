@@ -126,18 +126,18 @@ for k in range(1, nb_steps + 1):
 
     chipy.timer_StartTimer(timer_id)
     fext[:, 0:3] = Accel(p_coor, mass, G=GG)
-    # Record the position and velocity
-    for i in range(0, nbR3, 1):
-        Record_posvel[k,:] = Record_posvel[k,:] + mass[i] * coor[i, :]
-    Record_posvel[k, :] = Record_posvel[k,:]/np.sum(mass)
-
     # Compute the Earth position and velocity
     timespan = [(k-1)*dt,k*dt]
     Gravorder = 2
     PosVecE[k,:], PosVecSol = EarthGravity.EarthPos(timespan, PosVecE[k-1,:], Unit, Gravorder)
 
+    # Record the position and velocity
     for i in range(0, nbR3, 1):
-        fextE = EarthGravity.EarthAccel(GG,mass[i],p_coor[i, 0:3],PosVecE[i, 0:3])
+        Record_posvel[k, :] = Record_posvel[k, :] + mass[i] * coor[i, :]
+    Record_posvel[k, :] = Record_posvel[k, :] / np.sum(mass)
+
+    for i in range(0, nbR3, 1):
+        fextE = EarthGravity.EarthAccel(GG,mass[i],p_coor[i, 0:3],PosVecE[i, 0:3]+Record_posvel[k, 0:3])
         fext[i, :] = fext[i, :] * mass[i] + fextE
     chipy.timer_StopTimer(timer_id)
 
@@ -173,8 +173,8 @@ chipy.Finalize()
 fig = plt.figure()
 ax1 = plt.axes(projection='3d')
 ax1.plot3D(PosVecE[:,0],PosVecE[:,1],PosVecE[:,2],label='geocentric hyperbolic orbit',color='black')
-ax1.plot3D(Record_posvel[:,0],Record_posvel[1,:],Record_posvel[2,:],label='real orbit',color='blue')
-# ax1.scatter3D(PosVecE[0,0],PosVecE[0,1],PosVecE[0,2],label='initial position',c='red',s=20)
+# ax1.plot3D(Record_posvel[:,0],Record_posvel[1,:],Record_posvel[2,:],label='real orbit',color='blue')
+ax1.scatter3D(PosVecE[0,0],PosVecE[0,1],PosVecE[0,2],label='initial position',c='red',s=20)
 ax1.scatter3D(0,0,0, c='blue',s=20,label='Earth')
 ax1.set_xlabel('x')
 ax1.set_ylabel('y')
