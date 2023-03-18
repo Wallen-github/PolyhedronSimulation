@@ -17,6 +17,13 @@ def EarthAccel(GG,Mi,Posi,PosE):
     Accel[0:3] = - GG*ME*Mi*(Posi - PosE)/np.linalg.norm(Posi - PosE)**3
     return Accel
 
+def CenterMassAccel(GG,MA,PosE,PosCM):
+    ME = 5.972E24  # kg, Earth mass
+    Accel = np.zeros(6)
+    Accel[0:3] = - GG * ME * MA * (PosCM - PosE) / np.linalg.norm(PosCM - PosE) ** 3
+    return Accel
+
+
 def EarthPos(timespan,PosVec0,Unit,Gravorder):
     '''
     This function will compute the Earth acceleration based on the given Geocentric hyperbolic orbit and initial position/velocity

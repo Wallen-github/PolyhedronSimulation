@@ -119,9 +119,9 @@ $$m_i \ddot{\mathbf{r}}_i=m_i \ddot{\mathbf{q}}_i - m_i \ddot{\mathbf{q}}_{cm} =
 
 in which
 
-$$m_i \ddot{\mathbf{q}}_{cm} = \frac{Gm_0m_A\mathbf{q}_{cm}}{q_{cm}^3}$$
+$$m_i \ddot{\mathbf{q}}_{cm} = \frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
 
-$$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{q}_{0}}{q_{0}^3}$$
+$$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
 
 The mass $m_A$ is the asteroid mass.
 
@@ -224,6 +224,8 @@ The comparison between the 0th-order and 2nd-order gravity is determined with th
 #### 4.1. Shape Model regular 1
 
 This Shape model is made by two regular polygons generated from spheres with radii 'R' and 'r'. The two radii of the sphere can be solved from the known parameter 'volume' and 'largest extent.' For Apophis, the 'volume = 1.986E7 m^3', the 'largest extent = 410 m'. The 'largest extent' also can be substituted by the 'mean radius = 168 m'.
+
+The initial positions are $[r_1,0,0]$ and $$ 
 
 
 https://user-images.githubusercontent.com/38872598/225046066-256d5543-6817-4fb9-bac9-dd5a495a2acd.mp4

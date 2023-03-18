@@ -136,9 +136,12 @@ for k in range(1, nb_steps + 1):
         Record_posvel[k, :] = Record_posvel[k, :] + mass[i] * coor[i, :]
     Record_posvel[k, :] = Record_posvel[k, :] / np.sum(mass)
 
+    fextCM = EarthGravity.CenterMassAccel(GG, np.sum(mass), PosVecE[i, 0:3] + Record_posvel[k, 0:3],
+                                          Record_posvel[k, 0:3])
+
     for i in range(0, nbR3, 1):
         fextE = EarthGravity.EarthAccel(GG,mass[i],p_coor[i, 0:3],PosVecE[i, 0:3]+Record_posvel[k, 0:3])
-        fext[i, :] = fext[i, :] * mass[i] + fextE
+        fext[i, :] = fext[i, :] * mass[i] + fextE #+ fextCM
     chipy.timer_StopTimer(timer_id)
 
     for i in range(0, nbR3, 1):
