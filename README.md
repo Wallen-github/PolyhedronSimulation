@@ -231,4 +231,4 @@ The initial positions are $[r_1,0,0]$ and $$
 https://user-images.githubusercontent.com/38872598/225046066-256d5543-6817-4fb9-bac9-dd5a495a2acd.mp4
 
 
-
+https://user-images.githubusercontent.com/38872598/226085971-8ac1927a-9e38-4147-afe7-a60cd4bf3460.mp4
