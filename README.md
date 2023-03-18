@@ -207,7 +207,7 @@ The Apophis flyby orbit is a Geocentric hyperbolic orbit, Orbital elements are g
 
 The true anomaly can be used to set the initial state of Apophis, and here it is $f=-100 ~deg$.
 
-Then the transformation from orbital elements to Position/Velocity can be employed here. With the initial state, an integration over **3 days** are computed based on the above equation of motion. The left one uses the normalized unit, and the right one is united $km$.
+Then the transformation from orbital elements to Position/Velocity can be employed here. With the initial state, an integration over **3 days** are computed based on the above equation of motion. The left one uses the normalized unit, and the right one is united $km$. 
 
 <table>
     <tr>
@@ -225,7 +225,7 @@ The comparison between the 0th-order and 2nd-order gravity is determined with th
 
 This Shape model is made by two regular polygons generated from spheres with radii 'R' and 'r'. The two radii of the sphere can be solved from the known parameter 'volume' and 'largest extent.' For Apophis, the 'volume = 1.986E7 m^3', the 'largest extent = 410 m'. The 'largest extent' also can be substituted by the 'mean radius = 168 m'.
 
-The initial positions are $[r_1,0,0]$ and $$ 
+The initial positions are $[r_1,0,0]$ and $[-r_2,0,0]$, and these will be adjusted to the center of mass frame. 
 
 
 https://user-images.githubusercontent.com/38872598/225046066-256d5543-6817-4fb9-bac9-dd5a495a2acd.mp4
