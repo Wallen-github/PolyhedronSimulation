@@ -119,9 +119,9 @@ $$m_i \ddot{\mathbf{r}}_i=m_i \ddot{\mathbf{q}}_i - m_i \ddot{\mathbf{q}}_{cm} =
 
 in which
 
-$$m_i \ddot{\mathbf{q}}_{cm} = \frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
+$$m_i \ddot{\mathbf{q}}_{cm} = \frac{Gm_0m_A\mathbf{q}_{cm}}{q_{cm}^3}$$
 
-$$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{r}_{0}}{r_{0}^3}$$
+$$m_0 \ddot{\mathbf{q}}_{0} = -\frac{Gm_0m_A\mathbf{q}_{0}}{q_{0}^3}$$
 
 The mass $m_A$ is the asteroid mass.
 
