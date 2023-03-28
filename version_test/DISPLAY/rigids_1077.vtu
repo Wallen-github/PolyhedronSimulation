@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="2"                    NumberOfCells="2"                   >
+      <PointData>
+        <DataArray type="Int32" Name="Ids" format="appended" RangeMin="1"                    RangeMax="2"                    offset="0"                   />
+        <DataArray type="Float32" Name="Disp" NumberOfComponents="3" format="appended" RangeMin="1.7364367281"         RangeMax="2.5639106545"         offset="44"                  />
+        <DataArray type="Float32" Name="Velocy" NumberOfComponents="3" format="appended" RangeMin="2.4595005631"         RangeMax="10.317097379"         offset="112"                 />
+        <DataArray type="Float32" Name="Fext" NumberOfComponents="3" format="appended" RangeMin="128000019.72"         RangeMax="128000019.72"         offset="180"                 />
+        <DataArray type="Float32" Name="Reac" NumberOfComponents="3" format="appended" RangeMin="381470917.24"         RangeMax="381470917.24"         offset="244"                 />
+        <DataArray type="Float32" Name="Spin" NumberOfComponents="3" format="appended" RangeMin="6.2864980698"         RangeMax="6.2864980698"         offset="312"                 />
+        <DataArray type="Float32" Name="Mext" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="1.8093156429e-08"     offset="380"                 />
+        <DataArray type="Float32" Name="Torque" NumberOfComponents="3" format="appended" RangeMin="128.57229621"         RangeMax="642.81341554"         offset="436"                 />
+        <DataArray type="Float32" Name="alpha" NumberOfComponents="3" format="appended" RangeMin="0.99999997061"        RangeMax="0.99999997061"        offset="504"                 />
+        <DataArray type="Float32" Name="beta" NumberOfComponents="3" format="appended" RangeMin="0.99999997061"        RangeMax="0.99999997061"        offset="568"                 />
+        <DataArray type="Float32" Name="gamma" NumberOfComponents="3" format="appended" RangeMin="1"                    RangeMax="1"                    offset="632"                 />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="appended" RangeMin="1.2139298311"         RangeMax="1.5781204303"         offset="696"                 />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="764"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="808"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="852"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAAAIAAAADgAAAA==eJxjZGBgYAJiAAAYAAQ=AQAAAACAAAAYAAAAIQAAAA==eJyLWal04MvNNft0rfJUYlYust9VPn2/rtW7xQCc1wx9AQAAAACAAAAYAAAAIQAAAA==eJxr800+8OO31EELwanL2n0f2+tcuGlvISiqBgCZCgrXAQAAAACAAAAYAAAAHgAAAA==eJzbZXPXp73a78yM1FUbd9ncPQNk+wDZhgCjogynAQAAAACAAAAYAAAAHwAAAA==eJy7eHXJ2ejrkr6PFqw0unh1iS+QfRbI3gQAt8AOmQ==AQAAAACAAAAYAAAAHwAAAA==eJzrW7Bdc+ILS61/WicdjhqZrrR8eHQliA0AnFIMqg==AQAAAACAAAAYAAAAGAAAAA==eJxjYECAi9d6Np0pZDZaKSkjAQAskgVOAQAAAACAAAAYAAAAIQAAAA==eJyLPHfP6ueuPOumSQzOM87d26W3O283/xYFFwCimgwqAQAAAACAAAAYAAAAHAAAAA==eJzj+ZO+f2bTDbupKluW8kDZq5+/VwUAow8Ndw==AQAAAACAAAAYAAAAHAAAAA==eJyb2XRjH8+f9P0nXp1YNhPKLuJbqQoAvhsOLQ==AQAAAACAAAAYAAAAHgAAAA==eJw70V29LJht8TIGhgb73YUCaqb/zqmA2AB+GAkcAQAAAACAAAAYAAAAIQAAAA==eJzbEXR0/5eba/bpWuWpFCztsttVPn2/rtW7xQCrXg0bAQAAAACAAAAQAAAADgAAAA==eJxjYIAARigNAAAYAAI=AQAAAACAAAAQAAAADgAAAA==eJxjZIAAJigNAAAwAAQ=AQAAAACAAAACAAAACgAAAA==eJxjZAQAAAUAAw==
+  </AppendedData>
+</VTKFile>

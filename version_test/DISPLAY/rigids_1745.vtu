@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="2"                    NumberOfCells="2"                   >
+      <PointData>
+        <DataArray type="Int32" Name="Ids" format="appended" RangeMin="1"                    RangeMax="2"                    offset="0"                   />
+        <DataArray type="Float32" Name="Disp" NumberOfComponents="3" format="appended" RangeMin="1.2102990175"         RangeMax="3.243888217"          offset="44"                  />
+        <DataArray type="Float32" Name="Velocy" NumberOfComponents="3" format="appended" RangeMin="4.0372105001"         RangeMax="9.274435266"          offset="112"                 />
+        <DataArray type="Float32" Name="Fext" NumberOfComponents="3" format="appended" RangeMin="128000015.72"         RangeMax="128000015.72"         offset="180"                 />
+        <DataArray type="Float32" Name="Reac" NumberOfComponents="3" format="appended" RangeMin="381469147.16"         RangeMax="381469147.16"         offset="244"                 />
+        <DataArray type="Float32" Name="Spin" NumberOfComponents="3" format="appended" RangeMin="6.2884168625"         RangeMax="6.2884168625"         offset="308"                 />
+        <DataArray type="Float32" Name="Mext" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="6.5506778705e-09"     offset="376"                 />
+        <DataArray type="Float32" Name="Torque" NumberOfComponents="3" format="appended" RangeMin="20.733377495"         RangeMax="103.57556153"         offset="432"                 />
+        <DataArray type="Float32" Name="alpha" NumberOfComponents="3" format="appended" RangeMin="0.99999998003"        RangeMax="0.99999998003"        offset="500"                 />
+        <DataArray type="Float32" Name="beta" NumberOfComponents="3" format="appended" RangeMin="0.99999998003"        RangeMax="0.99999998003"        offset="564"                 />
+        <DataArray type="Float32" Name="gamma" NumberOfComponents="3" format="appended" RangeMin="1"                    RangeMax="1"                    offset="628"                 />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="appended" RangeMin="0.83827765296"        RangeMax="2.8281764781"         offset="692"                 />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="760"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="804"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="848"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAAAIAAAADgAAAA==eJxjZGBgYAJiAAAYAAQ=AQAAAACAAAAYAAAAIQAAAA==eJz71vNw/2E/vQMZT1eofutJtO/MDdmf+VRjKQC0hg2CAQAAAACAAAAYAAAAIQAAAA==eJzr/fnXYWf3zAN1/bXLe3/WHmgWsNtf1/9XDQC68w4VAQAAAACAAAAYAAAAHgAAAA==eJz7zibr81L7uU/MnI+bvrPJngGyzwDZRgCbpg0RAQAAAACAAAAYAAAAHgAAAA==eJxr+PPyTKHNmrPPcvuMG/689AGyfYHszQC7lg5XAQAAAACAAAAYAAAAHwAAAA==eJzrfFa+ssD8qcY2q5MOgolPNRh/vFgOYgMAmngMPQ==AQAAAACAAAAYAAAAGAAAAA==eJxjYECAM4cFNs6Sv7rRZ7aaBAAqYwW1AQAAAACAAAAYAAAAIQAAAA==eJxb3TF7l673Zcuvd5c6rm+fbfXS6/LODWrnnQCqPg12AQAAAACAAAAYAAAAHAAAAA==eJx7vmzJvoNpRfv3fzu79DmUPc/CWw0AzcMO/Q==AQAAAACAAAAYAAAAHAAAAA==eJw7mFZk/3zZkn35XDbLD0LZNf+MFwIAoXgNOQ==AQAAAACAAAAYAAAAHgAAAA==eJy7eFRT/fCmlcsYGBrsf3M2q86Pc1ADsQGHQgk4AQAAAACAAAAYAAAAIQAAAA==eJx7I+m8/7Cf3oGMpytU/Wd83tuZG7I/86nGUgCefwzcAQAAAACAAAAQAAAADgAAAA==eJxjYIAARigNAAAYAAI=AQAAAACAAAAQAAAADgAAAA==eJxjZIAAJigNAAAwAAQ=AQAAAACAAAACAAAACgAAAA==eJxjZAQAAAUAAw==
+  </AppendedData>
+</VTKFile>
