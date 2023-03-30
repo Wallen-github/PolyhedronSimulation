@@ -1,0 +1,84 @@
+! File BODIES                                                           
+!                                                                       
+! The symbol   '$'      preceeds a keyword used in scanning files.    
+!                                                                       
+! the symbol   'bdyty'  stands for 'body type data'.                
+! These data are distributed according to some species.                 
+!                                                                       
+! the specy    'blmty'  stands for 'bulk element type data',        
+! i.e. part or total bulk geometric description,                        
+! and bulk behaviour laws;                                              
+!                                                                       
+! the specy    'nodty'  stands for 'node type data',                
+! i.e. degrees of freedom data;                                         
+!                                                                       
+! the specy    'tacty'  stands for 'contactor type data';           
+!                                                                       
+! the keyword  '$$$$$$' ends a body record.                           
+!                                                                       
+                                                                      
+!-----------------------------------------------------------------------
+$bdyty
+ RBDY3        1
+$blmty
+ PLAIN      1  behav  STONE  avrd= 0.3514387D+00
+                             I1  = 0.9725477D-02  I2  = 0.9725477D-02  I3  = 0.9725477D-02
+$nodty
+ NO6xx      1                coo1= 0.5793917D+00  coo2= 0.0000000D+00  coo3= 0.1158783D+00
+                             coo4= 0.0000000D+00  coo5= 0.0000000D+00  coo6= 0.0000000D+00
+$tacty
+ POLYR      1  color  BLEUx  nb_vertex=      8    nb_faces=     12
+                             coo1= 0.2832582D+00  coo2= 0.2832582D+00  coo3=-0.2832582D+00
+                             coo1= 0.2832582D+00  coo2=-0.2832582D+00  coo3=-0.2832582D+00
+                             coo1= 0.2832582D+00  coo2=-0.2832582D+00  coo3= 0.2832582D+00
+                             coo1= 0.2832582D+00  coo2= 0.2832582D+00  coo3= 0.2832582D+00
+                             coo1=-0.2832582D+00  coo2= 0.2832582D+00  coo3=-0.2832582D+00
+                             coo1=-0.2832582D+00  coo2=-0.2832582D+00  coo3=-0.2832582D+00
+                             coo1=-0.2832582D+00  coo2=-0.2832582D+00  coo3= 0.2832582D+00
+                             coo1=-0.2832582D+00  coo2= 0.2832582D+00  coo3= 0.2832582D+00
+                             ver1=      1         ver2=      3         ver3=      2
+                             ver1=      3         ver2=      1         ver3=      4
+                             ver1=      1         ver2=      8         ver3=      4
+                             ver1=      5         ver2=      8         ver3=      1
+                             ver1=      2         ver2=      6         ver3=      1
+                             ver1=      1         ver2=      6         ver3=      5
+                             ver1=      7         ver2=      4         ver3=      8
+                             ver1=      3         ver2=      4         ver3=      7
+                             ver1=      7         ver2=      2         ver3=      3
+                             ver1=      7         ver2=      6         ver3=      2
+                             ver1=      8         ver2=      5         ver3=      7
+                             ver1=      7         ver2=      5         ver3=      6
+$$$$$$
+      
+$bdyty
+ RBDY3        2
+$blmty
+ PLAIN      1  behav  STONE  avrd= 0.5802125D+00
+                             I1  = 0.1367645D+00  I2  = 0.9847046D-01  I3  = 0.1367645D+00
+$nodty
+ NO6xx      1                coo1=-0.1287537D+00  coo2=-0.8480870D-17  coo3=-0.2575074D-01
+                             coo4= 0.0000000D+00  coo5= 0.0000000D+00  coo6= 0.0000000D+00
+$tacty
+ POLYR      1  color  BLEUx  nb_vertex=      8    nb_faces=     12
+                             coo1= 0.4248872D+00  coo2= 0.5665163D+00  coo3=-0.4248872D+00
+                             coo1=-0.4248872D+00  coo2= 0.5665163D+00  coo3=-0.4248872D+00
+                             coo1=-0.4248872D+00  coo2= 0.5665163D+00  coo3= 0.4248872D+00
+                             coo1= 0.4248872D+00  coo2= 0.5665163D+00  coo3= 0.4248872D+00
+                             coo1= 0.4248872D+00  coo2=-0.5665163D+00  coo3=-0.4248872D+00
+                             coo1=-0.4248872D+00  coo2=-0.5665163D+00  coo3=-0.4248872D+00
+                             coo1=-0.4248872D+00  coo2=-0.5665163D+00  coo3= 0.4248872D+00
+                             coo1= 0.4248872D+00  coo2=-0.5665163D+00  coo3= 0.4248872D+00
+                             ver1=      1         ver2=      2         ver3=      3
+                             ver1=      3         ver2=      4         ver3=      1
+                             ver1=      1         ver2=      4         ver3=      8
+                             ver1=      5         ver2=      1         ver3=      8
+                             ver1=      2         ver2=      1         ver3=      6
+                             ver1=      1         ver2=      5         ver3=      6
+                             ver1=      7         ver2=      8         ver3=      4
+                             ver1=      3         ver2=      7         ver3=      4
+                             ver1=      7         ver2=      3         ver3=      2
+                             ver1=      7         ver2=      2         ver3=      6
+                             ver1=      8         ver2=      7         ver3=      5
+                             ver1=      7         ver2=      6         ver3=      5
+$$$$$$
+      

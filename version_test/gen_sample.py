@@ -8,7 +8,12 @@
 @desc: 
 """
 import numpy as np
+from pylmgc90 import chipy
 from pylmgc90.pre import *
+
+from ComboRotation import ComboRotstaionY
+from version_test.ComboProperties import Get_CenterMass
+from version_test.Shift2CM import Shift2CM
 
 if not os.path.isdir('./DATBOX'):
     os.mkdir('./DATBOX')
@@ -25,16 +30,10 @@ mat    = materials()
 svs    = see_tables()
 tacts  = tact_behavs()
 
-rho = 10
+rho = 1000
 stone = material(name='STONE', materialType='RIGID', density=rho)
 mat.addMaterial(stone)
 mod = model(name='rigid', physics='MECAx', element='Rxx3D', dimension=dim)
-
-# center1 = np.array([50,0,0])
-# poly1 = rigidPolyhedron(model=mod, material=stone, center=center1, color='BLEUx',
-#                        generation_type='regular', nb_vertices=8, vertices=None,
-#                        faces=None, radius=10., tol=0., number=None, seed=None,
-#                     xr=1., yr=1., zr=1.)
 
 displacement = np.array([[0,0,0]])
 # vertices1 = np.array([[4,1,-1],[4,-1,-1],[4,-1,1],[4,1,1],
@@ -47,6 +46,9 @@ vertices2 = np.array([[0,2,-1],[-2,2,-1],[-2,2,1],[0,2,1],
                       [0,-2,-1],[-2,-2,-1],[-2,-2,1],[0,-2,1]]) - displacement
 faces2 = np.array([[1,2,3],[1,4,3],[1,4,8],[1,5,8],[1,2,6],[1,5,6],
                    [7,8,4],[7,3,4],[7,3,2],[7,2,6],[7,8,5],[7,6,5]])
+# thetal = 0
+# rotVer1 = ComboRotstaionY(vertices1,thetal)
+# rotVer2 = ComboRotstaionY(vertices2,thetal)
 poly1 = rigidPolyhedron(model=mod, material=stone, color='BLEUx',
                        generation_type='full', nb_vertices=4, vertices=vertices1,
                        faces=faces1, radius=10., tol=0., number=None, seed=None,
@@ -56,9 +58,17 @@ poly2 = rigidPolyhedron(model=mod, material=stone, color='BLEUx',
                        faces=faces2, radius=10., tol=0., number=None, seed=None,
                     xr=1., yr=1., zr=1.)
 
+# phil = 0
+# omegaPhi = 2*np.pi
+# omega_comb = np.array([omegaPhi*np.sin(thetal)*np.cos(phil),
+#                        omegaPhi*np.sin(thetal)*np.sin(phil),
+#                        omegaPhi*np.cos(thetal)])
 omega_comb = np.array([0,0,2*np.pi])
 r1 = poly1.nodes[1].coor.copy()
 r2 = poly2.nodes[1].coor.copy()
+# coor = np.vstack((r1, r2))
+# mass = np.array([poly1.contactors[0].volume * rho, poly2.contactors[0].volume * rho])
+# CM,coor_cm = Get_CenterMass(coor,mass)
 vel1 = np.cross(omega_comb,r1)
 vel2 = np.cross(omega_comb,r2)
 # poly1.imposeDrivenDof(component=[1, 2, 3], dofty='vlocy')
