@@ -1,0 +1,125 @@
+%--------------------------------------------------------------------------
+% Name: 
+
+% Desc: 
+
+% Auth: Hai-Shuo Wang
+
+% Time: 01/26/2023
+
+% Version 2.0:
+%--------------------------------------------------------------------------
+
+clc;
+clear;
+close all;
+format LONG;
+
+posvel = load('pos_vel_spin.dat');
+posvel_cm = load('pos_vel_spin_cm.dat');
+flyby = load("flybyOrbit.dat");
+
+figure
+plot3(posvel(:,7),posvel(:,8),posvel(:,9),LineWidth=2)
+hold on
+plot3(posvel(:,16),posvel(:,17),posvel(:,18),LineWidth=2)
+xlabel('\omega_x (1/hour)')
+ylabel('\omega_y (1/hour)')
+zlabel('\omega_z (1/hour)')
+grid on
+% title('Trajectory')
+set(gca,'FontSize',20,'FontWeight','bold')
+
+figure
+plot3(posvel(:,1),posvel(:,2),posvel(:,3),LineWidth=2,DisplayName='Body #1')
+hold on
+plot3(posvel(:,10),posvel(:,11),posvel(:,12),LineWidth=2,DisplayName='Body #2')
+scatter3(0,0,0,'filled',DisplayName='Earth')
+scatter3(posvel(1,1),posvel(1,2),posvel(1,3),"filled",DisplayName='Initial Position')
+xlabel('x (m)')
+ylabel('y (m)')
+zlabel('z (m)')
+grid on
+title('Trajectory in inertial frame')
+set(gca,'FontSize',20,'FontWeight','bold')
+
+figure
+plot3(posvel_cm(:,1),posvel_cm(:,2),posvel_cm(:,3),LineWidth=2,DisplayName='Body #1')
+hold on
+plot3(posvel_cm(:,10),posvel_cm(:,11),posvel_cm(:,12),LineWidth=2,DisplayName='Body #2')
+xlabel('x (m)')
+ylabel('y (m)')
+zlabel('z (m)')
+grid on
+title('Trajectory in CM frame')
+set(gca,'FontSize',20,'FontWeight','bold')
+
+energy = load('energy.dat');
+momentum = load("angular_momentum.dat");
+figure
+subplot(3,1,1)
+plot((energy(:,1)-energy(1,1))./abs(energy(1,1)),LineWidth = 2);
+title('relative values (A-A0)/A0')
+ylabel('Energy')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+subplot(3,1,2)
+plot((energy(:,2)-energy(1,2))./abs(energy(1,2)),LineWidth = 2);
+ylabel('Knetic')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+subplot(3,1,3)
+plot((momentum(:,4)-momentum(1,4))./momentum(1,4),LineWidth = 2);
+ylabel('Momentum^2')
+xlabel('time')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+
+figure
+subplot(3,1,1)
+plot(energy(:,1),LineWidth = 2);
+ylabel('Energy')
+title('absolute values')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+subplot(3,1,2)
+plot(energy(:,2),LineWidth = 2);
+ylabel('Knetic')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+subplot(3,1,3)
+plot(momentum(:,4),LineWidth = 2);
+ylabel('Momentum^2')
+xlabel('time')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+
+effectQ = load("effectquantity.dat");
+figure
+yyaxis left
+title('relative conserved quantity')
+plot(effectQ(:,1),LineWidth = 2);
+xlabel('time')
+ylabel('\omega_e (deg/hour)')
+yyaxis right
+plot(effectQ(:,2),LineWidth = 2);
+ylabel('I_d')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+
+figure
+scatter(effectQ(:,1),effectQ(:,3))
+xlabel('\omega_e (deg/hour)')
+ylabel('I_{tilde}')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+
+figure
+plot(effectQ(:,3),LineWidth = 2)
+xlabel('time')
+ylabel('I_{tilde}')
+grid on
+set(gca,'FontSize',20,'FontWeight','bold')
+
+
+
