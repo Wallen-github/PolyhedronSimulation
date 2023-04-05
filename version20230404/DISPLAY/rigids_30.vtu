@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" header_type="UInt32" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="2"                    NumberOfCells="2"                   >
+      <PointData>
+        <DataArray type="Int32" Name="Ids" format="appended" RangeMin="1"                    RangeMax="2"                    offset="0"                   />
+        <DataArray type="Float32" Name="Disp" NumberOfComponents="3" format="appended" RangeMin="0.1022317839"         RangeMax="0.61339068096"        offset="44"                  />
+        <DataArray type="Float32" Name="Velocy" NumberOfComponents="3" format="appended" RangeMin="0.0049834173609"      RangeMax="0.029900503386"       offset="112"                 />
+        <DataArray type="Float32" Name="Fext" NumberOfComponents="3" format="appended" RangeMin="0.28600344632"        RangeMax="0.28600344632"        offset="180"                 />
+        <DataArray type="Float32" Name="Reac" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="0"                    offset="244"                 />
+        <DataArray type="Float32" Name="Spin" NumberOfComponents="3" format="appended" RangeMin="0.13615826165"        RangeMax="0.21759082987"        offset="284"                 />
+        <DataArray type="Float32" Name="Mext" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="0.00020450073271"     offset="352"                 />
+        <DataArray type="Float32" Name="Torque" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="0"                    offset="408"                 />
+        <DataArray type="Float32" Name="alpha" NumberOfComponents="3" format="appended" RangeMin="1.0000000156"         RangeMax="1.0000000157"         offset="448"                 />
+        <DataArray type="Float32" Name="beta" NumberOfComponents="3" format="appended" RangeMin="0.99999998359"        RangeMax="1.0000000069"         offset="516"                 />
+        <DataArray type="Float32" Name="gamma" NumberOfComponents="3" format="appended" RangeMin="0.99999997794"        RangeMax="0.99999999418"        offset="584"                 />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="appended" RangeMin="0.093474868478"       RangeMax="0.56084917009"        offset="652"                 />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="720"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="764"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="808"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAAAIAAAADgAAAA==eJxjZGBgYAJiAAAYAAQ=AQAAAACAAAAYAAAAIQAAAA==eJzbvf7avqex923v+9/bd0m+39bl5ZQ9DqZTbAG9ww2nAQAAAACAAAAYAAAAIQAAAA==eJxzZ7i4Z4de+R4u6cbdraHd1hdOqljzquhYAQCCHAl+AQAAAACAAAAYAAAAHgAAAA==eJyzk/PcK/5L2fbk6T47OzlPWyB7L5C9DwB5PgrnAQAAAACAAAAYAAAACwAAAA==eJxjYMAOAAAYAAE=AQAAAACAAAAYAAAAIQAAAA==eJzbpDzPdvmDX7Yq/mr7Xv3stZm9ktXu21teWwCbdAwmAQAAAACAAAAYAAAAGAAAAA==eJxjYEAAne0BO/NeCFo8YWPZAQAjTgUyAQAAAACAAAAYAAAACwAAAA==eJxjYMAOAAAYAAE=AQAAAACAAAAYAAAAIQAAAA==eJyrYZ9l57j56b72gvD9s2fOsZslWmx/ibFvLwCPxguNAQAAAACAAAAYAAAAIQAAAA==eJxz+uxsbxZ5ed+mw3/sjjoU2s/1mrov67a6HQCaUAwgAQAAAACAAAAYAAAAIQAAAA==eJzLWSi4f+sbr/1HKxPsgtZz2Qk1vdk782X1fgCZQgymAQAAAACAAAAYAAAAIQAAAA==eJzboHrU9vSFBXsvMvHsL8lr3rMzO8wmd90uWwCftAxXAQAAAACAAAAQAAAADgAAAA==eJxjYIAARigNAAAYAAI=AQAAAACAAAAQAAAADgAAAA==eJxjZIAAJigNAAAwAAQ=AQAAAACAAAACAAAACgAAAA==eJxjZAQAAAUAAw==
+  </AppendedData>
+</VTKFile>

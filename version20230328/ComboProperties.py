@@ -110,8 +110,8 @@ def Get_EffectiveQuantity(kentic, momentum2, total_inertia):
     Inertia_t = 0.
     omega_e = 2*kentic/np.sqrt(momentum2)
     inertia_d = momentum2/(2*kentic)
-    Il = max(np.diagonal(total_inertia))
-    Is = min(np.diagonal(total_inertia))
+    Il = min(np.diagonal(total_inertia))
+    Is = max(np.diagonal(total_inertia))
     Ii = np.median(np.diagonal(total_inertia))
     if Ii<inertia_d<Is:
         Inertia_t = (inertia_d - Ii)/(Is-Ii)

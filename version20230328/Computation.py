@@ -135,25 +135,27 @@ for k in range(1, nb_steps + 1):
         fext[i, :] = 0.
 
     # record data
-    CM, coor_cm = Get_CenterMass(coor[:,0:3], mass)
-    CM, velo_cm = Get_CenterMass(velo[:,0:3], mass)
+    CMP, coor_cm = Get_CenterMass(coor[:,0:3], mass)
+    CMV, velo_cm = Get_CenterMass(velo[:,0:3], mass)
     for i in range(0, nbR3, 1):
         record_pvw[k - 1, i * 9:i * 9 + 3] = coor_cm[i, 0:3]*Lunit
         record_pvw[k - 1, i * 9 + 3:i * 9 + 6] = velo_cm[i,0:3] * Lunit/Tunit
         record_pvw[k - 1, i * 9 + 6:(i + 1) * 9] = velo[i,3:6] * 3600/Tunit
 
+    timespan = [(k-1)*dt * Tunit, k*dt * Tunit]  # sec
+    record_flyby[k - 1, 0] = float((k-1)*dt * Tunit)
+    record_flyby[k , 1:7], Sol = EarthPos(timespan, record_flyby[k - 1, 1:7], Unit, Gravorder=2)
+    rE = record_flyby[k,1:4] / Lunit
+    mE = 5.972E24 / Munit
+    r0i = np.zeros([1,6])
+
     chipy.timer_StartTimer(timer_id)
     # fext[:, 0:3] = Accel(p_coor, mass, G=6.6742e-11)
-    fext[:, 0:3] = Accel(coor[:,0:3], mass, G=GG)
-
-    timespan = [(k-1)*dt * Tunit, k*dt * Tunit]  # sec
-    record_flyby[k, 0] = float(k * dt)
-    record_flyby[k, 1:7], Sol = EarthPos(timespan, record_flyby[k - 1, 1:7], Unit, Gravorder=2)
-    rE = record_flyby[k, 1:7] / Lunit
-    mE = 5.972E24 / Munit
+    fext[:, 0:3] = Accel(coor[:, 0:3], mass, G=GG)
 
     for i in range(0, nbR3, 1):
-        fext[i, :] = fext[i, :] * mass[i] - mass[i] * mE / (np.linalg.norm(rE))**3 * rE
+        r0i[0,0:3] = (rE+coor_cm[i,0:3])
+        fext[i, :] = fext[i, :] * mass[i] - mass[i] * mE / (np.linalg.norm(r0i))**3 * r0i
 
     chipy.timer_StopTimer(timer_id)
 
